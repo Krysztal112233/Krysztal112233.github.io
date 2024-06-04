@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>GPG添加新的用户信息</title>
+    <link href="/2024/05/29/GPG%E6%B7%BB%E5%8A%A0%E6%96%B0%E7%9A%84%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF/"/>
+    <url>/2024/05/29/GPG%E6%B7%BB%E5%8A%A0%E6%96%B0%E7%9A%84%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>最近一段时间我决定启用 <code>krysztal.huang@outlook.com</code> 这个邮箱地址作为我的工作邮箱，于是我把 Github 等都换成了这个，但我的 GPG 就炸了。</p><span id="more"></span><p>所以需要找办法向 GPG 更新或者添加用户信息，总不可能删掉信息重新做 GPG 吧？</p><h2 id="选择编辑的-key">选择编辑的 Key</h2><p>这里假设你导入了你的主密钥，因为有可能你像我一样用的是子密钥</p><p>我发现也可以通过指定邮箱的方式来编辑 key，那就用邮箱方式吧</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">gpg --edit-key suibing112233@outlook.com<br></code></pre></td></tr></table></figure><p>进入后就可以开始编辑 Key 了，本次目的主要是新增不是删除，因为老的邮箱我也在用</p><p>只不过以后工作邮箱就变了</p><h2 id="新增-gpg-用户信息">新增 GPG 用户信息</h2><p>在 GPG 的交互终端里输入以下命令</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">gpg&gt; </span><span class="language-bash">adduid</span><br></code></pre></td></tr></table></figure><p>然后按照他提示的信息填入，这样新的信息就完成了</p><p>如果旧的信息需要被删除的话需要有额外的步骤，用 <code>deluid</code> 命令即可</p><p>完成后输入 <code>save</code> 命令退出 GPG 的交互终端即可</p><h2 id="接下来">接下来？</h2><p>接下来需要做的，就是重新导出密钥，重新之作智能卡，重新上传公钥到 KeyServer</p><p>以上步骤参照我的这篇文章即可 <a href="https://blog.krysztal.dev/2022/06/22/GPG%E7%89%A9%E7%90%86%E5%AF%86%E9%92%A5%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%AF%86%E9%92%A5%E7%9A%84%E8%BF%81%E7%A7%BB/">GPG 物理密钥的安装与密钥的迁移</a></p><p>对了，还得更新 Github 这些地方的公钥，他们不是自动更新的</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>捣鼓</category>
+      
+      <category>杂文</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>技术</tag>
+      
+      <tag>捣鼓</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>GSoC2024 笔记：使用 Rust 重新实现 procps</title>
     <link href="/2024/03/28/GSoC2024-notes/"/>
     <url>/2024/03/28/GSoC2024-notes/</url>
