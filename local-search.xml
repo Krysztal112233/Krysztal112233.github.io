@@ -4,6 +4,37 @@
   
   
   <entry>
+    <title>使用 debootstrap 与 schroot 构建一个纯净环境</title>
+    <link href="/2024/07/12/%E4%BD%BF%E7%94%A8debootstrap%E4%B8%8Eschroot%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%BA%AF%E5%87%80%E7%8E%AF%E5%A2%83/"/>
+    <url>/2024/07/12/%E4%BD%BF%E7%94%A8debootstrap%E4%B8%8Eschroot%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%BA%AF%E5%87%80%E7%8E%AF%E5%A2%83/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><code>chroot</code> 在系统工程和系统架构方面有很重大的作用，可以创建一个不是那么隔离的纯净环境，用于调试一些可能会污染宿主机环境的程序是十分方便的。</p><span id="more"></span><h2 id="为什么不使用虚拟机">为什么不使用虚拟机？</h2><p>使用虚拟机说实话挺不方便的，如果使用虚拟机的话需要单独开一片磁盘空间和各种配置。</p><p>很多环境下不需要如虚拟机那样的隔离空间（例如软件包构建与打包等），在这种环境下使用 <code>chroot</code> 就可以了。</p><p>事实上，在 Debian 的官方打包流程里也推荐使用 <code>chroot</code> 的派生工具 <code>schroot</code> 来打包程序<sup id="fnref:0"><a href="#fn:0" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="[DebianWiki: SchrootPackageing](https://wiki.debian.org/SchrootPackaging)">[0]</span></a></sup>，这样打包出来的程序可以认为在所有 Debian <strong><em>基础系统</em></strong>上是幂等的。</p><h2 id="下一步......">下一步......</h2><p>我们接下来制作的，DebianWiki 里称之为 <em>Caged Debian</em>.</p><figure><img src="https://wiki.debian.org/SchrootPackaging?action=AttachFile&amp;do=get&amp;target=debian-cage.png" alt="" /><figcaption>Caged Debian</figcaption></figure><p>首先需要安装两个必要软件包</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">apt install debootstrap schroot<br></code></pre></td></tr></table></figure><p>然后变更 schroot 的配置</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">cp /etc/schroot/schroot.conf /etc/schroot/schroot.conf.old<br></code></pre></td></tr></table></figure><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nano /etc/schroot/schroot.conf<br></code></pre></td></tr></table></figure><p>接下来填入这些内容，填的时候记得改用户名</p><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs txt">[unstable-amd64]<br>description=debian unstable amd64<br>type=directory<br>directory=/srv/chroot/unstable-amd64<br>users=&lt;YOUR_NAME&gt;<br>root-groups=root<br>preserve-environment=true<br></code></pre></td></tr></table></figure><p>在完成上一步后，就可以开始准备安装了</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mkdir -p /srv/chroot/unstable-amd64<br></code></pre></td></tr></table></figure><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">debootstrap --arch amd64 unstable /srv/chroot/unstable-amd64 https://deb.debian.org/debian<br></code></pre></td></tr></table></figure><p>请注意，如果你使用的底层系统版本出现在 Debian UsrMerge 之前那么你只能使用本文发出时的 Debian Stable （Debian12）版本，否则你会遇到很多奇怪的问题比如说无法解压。</p><p>完成这一步后需要准备一下 Caged Debian：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">chroot /srv/chroot/unstable-amd64<br></code></pre></td></tr></table></figure><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">echo proc /proc proc defaults 0 0 &gt;&gt; /etc/fstab<br></code></pre></td></tr></table></figure><p>在上一步是写的挂载 <code>/proc</code> 虚拟文件系统，这一步必须要做。</p><p>然后就可以进入环境了</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">schroot -c unstable-amd64 -u root<br></code></pre></td></tr></table></figure><h2 id="后续">后续</h2><p>其实完成到这里已经可以了，接下来的步骤是选做。</p><p>不过做了肯定更好 :)</p><h3 id="设置软件源并且安装基础软件">设置软件源并且安装基础软件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nano /etc/apt/sources.list<br></code></pre></td></tr></table></figure><p>随后输入</p><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs txt">deb https://deb.debian.org/debian unstable main<br>deb-src https://deb.debian.org/debian unstable main<br></code></pre></td></tr></table></figure><p>搞定</p><!-- reference --><div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:0"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">0.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><a href="https://wiki.debian.org/SchrootPackaging">DebianWiki: SchrootPackageing</a><a href="#fnref:0" rev="footnote"> ↩︎</a></span></li></ol></div></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习</category>
+      
+      <category>笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>技术</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>学习</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>GPG添加新的用户信息</title>
     <link href="/2024/05/29/GPG%E6%B7%BB%E5%8A%A0%E6%96%B0%E7%9A%84%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF/"/>
     <url>/2024/05/29/GPG%E6%B7%BB%E5%8A%A0%E6%96%B0%E7%9A%84%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF/</url>
