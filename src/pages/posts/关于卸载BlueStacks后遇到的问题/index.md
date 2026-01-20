@@ -75,7 +75,7 @@ Windows 不是 UNIX-like 系统，早就去掉了 POSIX 子系统，所以 Windo
 
 但是 issue 中其他回复对我是无用的，所以我只找到了这一条大概是有效的命令
 
-```pwsh
+```bash
 netsh winsock reset
 ```
 

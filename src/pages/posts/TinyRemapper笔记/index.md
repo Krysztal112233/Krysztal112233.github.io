@@ -107,7 +107,7 @@ TinyRemapper 有它们自己的格式，这是这个笔记的重点
 
 ### CLASS
 
-```tiny
+```txt
 CLASS    a    net/minecraft/class_4581
 │───│   │─│   │──────────────────────│
   │      │             │
@@ -138,7 +138,7 @@ if ("CLASS".equals(type)) {
 
 ### FIELD
 
-```tiny
+```txt
 FIELD    b    F    a    field_21633
 │───│   │─│  │─│  │─│   │─────────│
   │      │    │    │         │
@@ -160,7 +160,7 @@ struct Field {
 
 ### METHOD
 
-```tiny
+```txt
 METHOD    a    (F)Lorg/joml/Quaternionf;    a    method_46349
 │────│   │─│   │───────────────────────│   │─│   │──────────│
   │       │                 │               │          │

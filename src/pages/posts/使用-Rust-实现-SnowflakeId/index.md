@@ -2,9 +2,9 @@
 title: 使用 Rust 实现 SnowflakeId
 date: 2024-10-23 22:30:51
 tags:
-  - 技术
-  - 捣鼓
-  - 笔记
+    - 技术
+    - 捣鼓
+    - 笔记
 ---
 
 在最近的业务中更改设计的时候最终决定使用 [雪花 ID](https://en.wikipedia.org/wiki/Snowflake_ID) （下文称之为 **SID**）作为数据库的主键，这样可以避免使用发号器等中间件。

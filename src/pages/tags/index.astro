@@ -1,0 +1,26 @@
+---
+import Article from "../../components/Article.astro";
+import MainFrame from "../../layout/MainFrame.astro";
+import I from "../../components/TagListItem.astro";
+
+const allPosts = Object.values(
+    import.meta.glob("../posts/**/*.md", { eager: true }),
+);
+const tags = [
+    ...new Set(allPosts.map((post: any) => post.frontmatter.tags).flat()),
+];
+---
+
+<MainFrame>
+    <Article>
+        <div class="pt-1">
+            <ul class="list">
+                {
+                    tags.map((tag, index) => (
+                        <I name={tag} index={index} count={10} />
+                    ))
+                }
+            </ul>
+        </div>
+    </Article>
+</MainFrame>

@@ -14,7 +14,7 @@ tags:
 查阅文档发现 Caddy 本身不支持直接写 CORS 的配置，但是 CORS 基本上是使用 HTTP
 Header 来实现的[^0]，所以我们应该只需要写对应的 HTTP Header 就行了:
 
-```caddyfile
+```txt
 :80{
     header {
         Access-Control-Allow-Origin *
@@ -30,7 +30,7 @@ Header 来实现的[^0]，所以我们应该只需要写对应的 HTTP Header �
 
 下面这段粘贴复制出去就可以用了，非常方便
 
-```caddyfile
+```txt
 (cors) {
   @cors_preflight method OPTIONS
   @cors header Origin {args.0}
@@ -52,7 +52,7 @@ Header 来实现的[^0]，所以我们应该只需要写对应的 HTTP Header �
 
 然后在站点配置里如下引用：
 
-```caddyfile
+```txt
 :80 {
     import cors *
 
