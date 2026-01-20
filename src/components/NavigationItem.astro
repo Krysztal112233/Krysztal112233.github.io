@@ -1,0 +1,18 @@
+---
+import { Icon } from "astro-icon/components";
+interface Props {
+    href: string;
+    label?: string;
+    icon?: string;
+    class?: string;
+}
+
+const { href, label, icon, class: className } = Astro.props;
+---
+
+<li>
+    <a href={href} class:list={["text-lg", className]}>
+        {icon && <Icon name={icon} />}
+        {label && <span>{label}</span>}
+    </a>
+</li>

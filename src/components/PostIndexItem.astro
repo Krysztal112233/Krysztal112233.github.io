@@ -1,0 +1,46 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+    title: string;
+    desc: string;
+    date?: string;
+    tags?: string[];
+}
+
+const { title, desc, date, tags } = Astro.props;
+---
+
+<div class="card m-8">
+    <div class="card-body p-4">
+        <h2 class="card-title">{title}</h2>
+        <p>{desc}</p>
+        <div class="card-actions items-center justify-start gap-4">
+            {
+                date && (
+                    <div class="flex items-center gap-1">
+                        <Icon
+                            name="material-symbols:date-range-outline"
+                            class="text-base"
+                        />
+                        <span>{date}</span>
+                    </div>
+                )
+            }
+
+            {
+                tags && tags.length > 0 && (
+                    <div class="flex items-center gap-1">
+                        <Icon
+                            name="material-symbols:label-outline"
+                            class="text-base"
+                        />
+                        {tags.map((tag) => (
+                            <span>#{tag}</span>
+                        ))}
+                    </div>
+                )
+            }
+        </div>
+    </div>
+</div>

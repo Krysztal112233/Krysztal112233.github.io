@@ -1,0 +1,27 @@
+{
+    "name": "krysztal-astro",
+    "type": "module",
+    "version": "1.0.0",
+    "scripts": {
+        "dev": "astro dev --host",
+        "build": "astro build",
+        "preview": "astro preview"
+    },
+    "dependencies": {
+        "@astrojs/mdx": "^4.3.13",
+        "@astrojs/tailwind": "^5.1.5",
+        "@iconify-json/material-symbols": "^1.2.52",
+        "@iconify-json/simple-icons": "^1.2.66",
+        "@mdx-js/language-server": "^0.6.3",
+        "@tailwindcss/vite": "^4.1.18",
+        "astro": "^5.16.8",
+        "astro-icon": "^1.1.5",
+        "daisyui": "^5.5.14",
+        "sharp": "^0.34.5",
+        "tailwindcss": "^4.1.18"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "2.3.11",
+        "@tailwindcss/typography": "^0.5.19"
+    }
+}

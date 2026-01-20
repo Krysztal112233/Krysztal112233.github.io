@@ -1,0 +1,24 @@
+---
+import "../style/global.css";
+
+import Footer from "../components/Footer.astro";
+import Navigation from "../components/Navigation.astro";
+---
+
+<html lang="zh-CN">
+    <link href="https://fonts.cdnfonts.com/css/victor-mono" rel="stylesheet" />
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+
+    <body class="flex min-h-screen flex-col">
+        <Navigation />
+
+        <main class="flex-1">
+            <slot />
+        </main>
+
+        <Footer />
+    </body>
+</html>

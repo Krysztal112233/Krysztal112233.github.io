@@ -1,0 +1,12 @@
+---
+import MainFrame from "./MainFrame.astro";
+import Article from "../components/Article.astro";
+---
+
+<MainFrame>
+    <Article>
+        <article class="prose mx-auto max-w-11/12 p-4">
+            <slot />
+        </article>
+    </Article>
+</MainFrame>

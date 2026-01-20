@@ -1,0 +1,59 @@
+---
+import Article from "../components/Article.astro";
+import MainFrame from "./MainFrame.astro";
+---
+
+<MainFrame>
+    <div class="p-8"></div>
+    <Article>
+        <div class="m-4">
+            <div
+                class="mx-auto max-w-11/12 flex-col gap-8 rounded-md p-4 md:flex-row md:items-start"
+            >
+                <div class="avatar -mt-24 flex flex-1 justify-center p-4">
+                    <div class="w-32 rounded-full shadow-xl">
+                        <img
+                            src="https://avatars.githubusercontent.com/u/20512501"
+                        />
+                    </div>
+                </div>
+
+                <div class="prose md:w-2/3">
+                    <h2
+                        class="mb-4 text-2xl font-bold italic"
+                        style="font-family: Victor Mono; font-display: swap;"
+                    >
+                        Krysztal Huang
+                    </h2>
+                    <p class="mb-4">
+                        你好，我是 Krysztal Huang。能翻到这里，是我们的缘分 :)。
+                    </p>
+                    <p class="mb-4">
+                        我本科毕业于电子工程专业，到现在主要使用 Rust, Scala,
+                        Java, C 语言完成工作。
+                    </p>
+
+                    <p class="mb-4">
+                        <ul>
+                            <li>对编译器感兴趣</li>
+                            <li>对操作系统感兴趣</li>
+                            <li>开源软件贡献者</li>
+                            <li>Debian Maintainer 实习中</li>
+                            <li>老年代 Minecraft 玩家</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+            <div
+                class="divider divider-secondary italic antialiased max-md:hidden"
+                style="font-family: Victor Mono; font-display: swap;"
+            >
+                Perfer et obdura, dolor hic tibi proderit olim.
+            </div>
+        </div>
+
+        <article class="prose mx-auto max-w-11/12 p-4">
+            <slot />
+        </article>
+    </Article>
+</MainFrame>

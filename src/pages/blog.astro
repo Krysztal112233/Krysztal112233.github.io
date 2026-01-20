@@ -1,0 +1,9 @@
+---
+import PostIndexPage from "../layout/PostIndexPage.astro";
+
+const allPosts = Object.values(
+    import.meta.glob("./posts/*.md", { eager: true }),
+);
+---
+
+<PostIndexPage />

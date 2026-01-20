@@ -1,0 +1,21 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+    href?: string;
+    label?: string;
+    icon?: string;
+    target?: string;
+}
+
+const { href, label, icon, target } = Astro.props;
+---
+
+<a
+    href={href || "#"}
+    target={target}
+    class:list={["text-current", "btn", "btn-ghost"]}
+>
+    {icon && <Icon name={icon} class="text-xl" />}
+    {label && <span class="text-base">{label}</span>}
+</a>
