@@ -9,12 +9,12 @@ import { Icon } from "astro-icon/components";
 
     <ul
         tabindex="0"
-        class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow mt-14 backdrop-blur-md"
+        class="dropdown-content menu bg-base-100 rounded-box z-1 mt-14 w-52 p-2 shadow backdrop-blur-md"
     >
         <slot />
     </ul>
 </div>
 
-<ul class="menu menu-horizontal px-1 text-lg items-center hidden md:flex">
+<ul class="menu menu-horizontal hidden items-center px-1 text-lg md:flex">
     <slot />
 </ul>

@@ -1,15 +1,20 @@
 ---
 import N from "./NavigationItem.astro";
-import IconButton from "./IconButton.astro";
+import I from "./IconButton.astro";
 import NF from "./NavigationFolder.astro";
 import ThemeSwitcher from "./ThemeSwitcher.astro";
 ---
 
 <div
-    class="navbar fixed top-4 right-4 left-4 z-50 mx-auto w-[calc(100%-2rem)] max-w-7xl rounded-2xl bg-white/30 shadow-sm backdrop-blur-md"
+    class="navbar fixed top-4 right-4 left-4 z-50 mx-auto w-[calc(100%-2rem)] max-w-7xl rounded-2xl bg-contain shadow-sm backdrop-blur-md"
 >
     <div class="flex-1">
-        <a class="btn btn-ghost text-2xl" href="/">亘古之白</a>
+        <a
+            class="btn btn-ghost text-2xl italic"
+            href="/"
+            style="font-family: Victor Mono; font-display: swap;"
+            >See you soon.</a
+        >
     </div>
 
     <NF>
@@ -19,7 +24,7 @@ import ThemeSwitcher from "./ThemeSwitcher.astro";
         <N href="/tags/" label="标签" icon="material-symbols:tag" />
         <N href="/links/" label="友链" icon="material-symbols:link-2" />
 
-        <IconButton icon="material-symbols:rss-feed-rounded" />
+        <I icon="material-symbols:rss-feed-rounded" />
         <ThemeSwitcher />
     </NF>
 </div>

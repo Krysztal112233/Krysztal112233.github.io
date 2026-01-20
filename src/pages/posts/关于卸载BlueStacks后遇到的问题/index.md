@@ -23,19 +23,19 @@ BlueStacks 是一个超强的安卓模拟器，由于最近有需求所以安装
 
 首先我的 Docker 服务启动失败了,
 
-![DockerError](./关于卸载BlueStacks后遇到的问题/error1.png)
+![DockerError](./error1.png)
 
 然后我的 WSL2 无法启动
 
-![WSL2Error](./关于卸载BlueStacks后遇到的问题/error2.png)
+![WSL2Error](./error2.png)
 
 随后我检查了我的系统功能配置
 
-![SysConfig](./关于卸载BlueStacks后遇到的问题/config.png)
+![SysConfig](./config.png)
 
 检查了我的虚拟化配置
 
-![SysConfig2](./关于卸载BlueStacks后遇到的问题/config2.png)
+![SysConfig2](./config2.png)
 
 他们都是正常的
 
