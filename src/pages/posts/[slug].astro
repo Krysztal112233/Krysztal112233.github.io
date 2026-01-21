@@ -1,0 +1,47 @@
+---
+import { getCollection } from "astro:content";
+import Article from "../../components/Article.astro";
+import MainFrame from "../../layout/MainFrame.astro";
+import TagBadge from "../../components/TagBadge.astro";
+
+export async function getStaticPaths() {
+    const posts = await getCollection("posts");
+    return posts.map((post) => ({
+        params: { slug: post.slug },
+        props: { post },
+    }));
+}
+
+const { post } = Astro.props as any;
+const { Content } = (await post.render()) as any;
+---
+
+<MainFrame>
+    <Article>
+        <div class="mx-auto max-w-11/12 p-4 pt-8">
+            <h1 class="mb-4 text-3xl font-bold">{post.data.title}</h1>
+            <div class="text-gray-500">
+                <time
+                    class="italic"
+                    style="font-family: Victor Mono; font-display: swap;"
+                    >{post.data.date.toDateString()}</time
+                >
+                {
+                    post.data.tags && post.data.tags.length > 0 && (
+                        <div class="mt-2">
+                            {post.data.tags.map((tag: string) => (
+                                <TagBadge name={tag} />
+                            ))}
+                        </div>
+                    )
+                }
+            </div>
+
+            <div class="divider m-1"></div>
+
+            <div class="prose prose-lg max-w-none pb-8">
+                <Content />
+            </div>
+        </div>
+    </Article>
+</MainFrame>

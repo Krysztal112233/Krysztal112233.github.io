@@ -1,11 +1,10 @@
 ---
+import { getCollection } from "astro:content";
 import Article from "../components/Article.astro";
 import I from "../components/PostIndexItem.astro";
 import MainFrame from "../layout/MainFrame.astro";
 
-const allPosts = Object.values(
-    import.meta.glob("./posts/**/*.md", { eager: true }),
-);
+const allPosts = await getCollection("posts");
 ---
 
 <MainFrame>
@@ -14,10 +13,10 @@ const allPosts = Object.values(
             {
                 allPosts.map((post: any) => (
                     <I
-                        title={post.frontmatter.title}
-                        date={post.frontmatter.date}
-                        href={post.url}
-                        tags={post.frontmatter.tags}
+                        title={post.data.title}
+                        date={post.data.date}
+                        href={`/posts/${post.slug}/`}
+                        tags={post.data.tags}
                     />
                 ))
             }

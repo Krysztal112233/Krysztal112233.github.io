@@ -2,8 +2,8 @@
 title: 被 AppArmor 击杀的 Dockge
 date: 2025-10-12 23:00:30
 tags:
-  - 杂项
-  - 操作系统
+    - 杂项
+    - 操作系统
 ---
 
 Debian 自从 Debian10 后开始默认启用了 AppArmor，这是另外一个和 SELinux 类似的 MAC(Mandatory Access Control) 实现，但他有更容易被人类所接受的配置颗粒度，并且由社区开发，而且很容易关掉（不推荐你关掉）
@@ -73,38 +73,38 @@ Debian 自从 Debian10 后开始默认启用了 AppArmor，这是另外一个和
 
 ```yaml
 services:
-  dockge:
-    image: louislam/dockge:nightly
-    restart: unless-stopped
-    ports:
-      - 5001:5001
-    volumes:
-      - ./data:/app/data
-      - /pool/striping/dockge/stacks:/pool/striping/dockge/stacks
-      - /var/run/docker.sock:/var/run/docker.sock
-    environment:
-      - DOCKGE_ENABLE_CONSOLE=true
-      - DOCKGE_STACKS_DIR=/pool/striping/dockge/stacks
+    dockge:
+        image: louislam/dockge:nightly
+        restart: unless-stopped
+        ports:
+            - 5001:5001
+        volumes:
+            - ./data:/app/data
+            - /pool/striping/dockge/stacks:/pool/striping/dockge/stacks
+            - /var/run/docker.sock:/var/run/docker.sock
+        environment:
+            - DOCKGE_ENABLE_CONSOLE=true
+            - DOCKGE_STACKS_DIR=/pool/striping/dockge/stacks
 ```
 
 在修改之后，请注意新添加的 `security_opt` 字段
 
 ```yaml
 services:
-  dockge:
-    image: louislam/dockge:nightly
-    restart: unless-stopped
-    ports:
-      - 5001:5001
-    volumes:
-      - ./data:/app/data
-      - /pool/striping/dockge/stacks:/pool/striping/dockge/stacks
-      - /var/run/docker.sock:/var/run/docker.sock
-    environment:
-      - DOCKGE_ENABLE_CONSOLE=true
-      - DOCKGE_STACKS_DIR=/pool/striping/dockge/stacks
-    security_opt:
-      - apparmor:unconfined
+    dockge:
+        image: louislam/dockge:nightly
+        restart: unless-stopped
+        ports:
+            - 5001:5001
+        volumes:
+            - ./data:/app/data
+            - /pool/striping/dockge/stacks:/pool/striping/dockge/stacks
+            - /var/run/docker.sock:/var/run/docker.sock
+        environment:
+            - DOCKGE_ENABLE_CONSOLE=true
+            - DOCKGE_STACKS_DIR=/pool/striping/dockge/stacks
+        security_opt:
+            - apparmor:unconfined
 ```
 
 ### 关闭 AppArmor 对于 Docker 的管控
@@ -150,18 +150,18 @@ Proxmox 的[手册](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#chapte
 也就是说这部分功能实际上是由 PVE 接管了的，因此会造成非常多的问题——但我好像还是没有搞懂为什么，论坛上指出可能是 Proxmox 的网络规则导致，并且有其独特的 LXC 规则因此不支持 Docker：
 
 - [How difficult are Dockers to setup on Proxmox?](https://www.reddit.com/r/Proxmox/comments/16h9n0h/how_difficult_are_dockers_to_setup_on_proxmox/)
-  - The isolation on both on proxmox leaves a bit to be desired. NFS shares
-    and mounts continue to cause issues. Particularly in CTs. If a docker stack
-    gets a reference to a filesystem which then goes away it can become kernel
-    locked and will never, ever let go of that filesystem until you do a
-    complete reboot of the PVE node.
-  - Proxmox 上的隔离机制还有些不尽如人意。NFS
-    共享和挂载持续引发各种问题，尤其是在 CT 容器中尤为突出。如果某个 Docker
-    堆栈引用了一个文件系统，而该文件系统随后又消失了，那么它就可能彻底卡死内核，而且无论如何都不会再释放这个文件系统，除非你彻底重启整个
-    PVE 节点。
+    - The isolation on both on proxmox leaves a bit to be desired. NFS shares
+      and mounts continue to cause issues. Particularly in CTs. If a docker stack
+      gets a reference to a filesystem which then goes away it can become kernel
+      locked and will never, ever let go of that filesystem until you do a
+      complete reboot of the PVE node.
+    - Proxmox 上的隔离机制还有些不尽如人意。NFS
+      共享和挂载持续引发各种问题，尤其是在 CT 容器中尤为突出。如果某个 Docker
+      堆栈引用了一个文件系统，而该文件系统随后又消失了，那么它就可能彻底卡死内核，而且无论如何都不会再释放这个文件系统，除非你彻底重启整个
+      PVE 节点。
 - [Docker and Proxmox side-by-side](https://forum.proxmox.com/threads/docker-and-proxmox-side-by-side.33349/)
-  - Running Docker in LXC is not recommended or supported on Proxmox VE (you will run in many issues).
-  - 在 Proxmox VE 上，在 LXC 中运行 Docker 是不被推荐且不受支持的（你会遇到很多问题）。
+    - Running Docker in LXC is not recommended or supported on Proxmox VE (you will run in many issues).
+    - 在 Proxmox VE 上，在 LXC 中运行 Docker 是不被推荐且不受支持的（你会遇到很多问题）。
 
 我猜测其实可能并不是内核导致的，而是安装 Proxmox 是某些包引入的 iptables 规则导致的——毕竟我是从 Debian 安装的 Proxmox 而不是直接使用 ISO 安装的 Proxmox
 
