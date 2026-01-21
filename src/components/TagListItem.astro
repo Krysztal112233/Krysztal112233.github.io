@@ -8,20 +8,13 @@ interface Props {
     count: number;
 }
 
-const { index, name, desc, count } = Astro.props;
+const { name, desc, count } = Astro.props;
 ---
 
 <li class="list-row items-center">
     <div></div>
-    <div class="text-2xl tabular-nums">
+    <div class="text-xl tabular-nums">
         {name}
-
-        <div
-            class="text-lg font-thin tabular-nums opacity-30"
-            style="font-family: Victor Mono; font-display: swap;"
-        >
-            {`${count} items`}
-        </div>
     </div>
 
     <div class="divider divider-horizontal max-md:hidden"></div>

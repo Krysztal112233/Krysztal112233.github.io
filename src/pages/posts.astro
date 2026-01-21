@@ -4,7 +4,7 @@ import I from "../components/PostIndexItem.astro";
 import MainFrame from "../layout/MainFrame.astro";
 
 const allPosts = Object.values(
-    import.meta.glob("../content/posts/**/*.md", { eager: true }),
+    import.meta.glob("./posts/**/*.md", { eager: true }),
 );
 ---
 
@@ -15,7 +15,6 @@ const allPosts = Object.values(
                 allPosts.map((post: any) => (
                     <I
                         title={post.frontmatter.title}
-                        desc="Desc"
                         date={post.frontmatter.date}
                         href={post.url}
                         tags={post.frontmatter.tags}

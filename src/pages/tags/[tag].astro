@@ -33,7 +33,6 @@ const { posts } = Astro.props;
                 posts.map((post: any) => (
                     <I
                         title={post.frontmatter.title}
-                        desc="Desc"
                         date={post.frontmatter.date}
                         href={post.url}
                         tags={post.frontmatter.tags}

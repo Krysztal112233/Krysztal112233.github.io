@@ -1,9 +1,10 @@
 ---
 import { Icon } from "astro-icon/components";
+import TagBadge from "./TagBadge.astro";
 
 interface Props {
     title: string;
-    desc: string;
+    desc?: string;
     href: string;
     date: string;
     tags: string[];
@@ -15,8 +16,11 @@ const { title, href, desc, date, tags } = Astro.props;
 <div class="card m-8">
     <div class="card-body p-4">
         <h2 class="card-title"><a href={href}>{title}</a></h2>
-        <p>{desc}</p>
-        <div class="card-actions items-center justify-start gap-4">
+        {desc && <p>{desc}</p>}
+        <div
+            class="card-actions flex flex-col items-start justify-start gap-4 md:flex-row md:items-center"
+        >
+            <!-- Date Item -->
             <div class="flex items-center gap-1">
                 <Icon
                     name="material-symbols:date-range-outline"
@@ -24,18 +28,16 @@ const { title, href, desc, date, tags } = Astro.props;
                 />
                 <span>{date}</span>
             </div>
-
+            <!-- Tags Item -->
             {
                 tags && tags.length > 0 && (
-                    <div class="flex items-center gap-1">
+                    <div class="flex shrink-0 flex-wrap items-center gap-1">
                         <Icon
                             name="material-symbols:label-outline"
                             class="text-base"
                         />
                         {tags.map((tag) => (
-                            <span class="badge badge-soft">
-                                <a href={`/tags/${tag}`}>{tag}</a>
-                            </span>
+                            <TagBadge name={tag} />
                         ))}
                     </div>
                 )

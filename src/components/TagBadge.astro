@@ -1,0 +1,11 @@
+---
+interface Props {
+    name: string;
+}
+
+const { name } = Astro.props;
+---
+
+<span class="badge badge-soft">
+    <a href={`/tags/${name}`}>{name}</a>
+</span>
