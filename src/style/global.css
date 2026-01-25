@@ -1,3 +1,13 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @plugin "daisyui";
+
+mjx-container[jax="SVG"][display="true"] {
+    display: flex !important;
+    justify-content: center;
+}
+
+mjx-container[jax="SVG"] {
+    display: inline-block !important;
+    vertical-align: -2.5px;
+}
