@@ -11,3 +11,7 @@ mjx-container[jax="SVG"] {
     display: inline-block !important;
     vertical-align: -2.5px;
 }
+
+code {
+    @apply break-all;
+}
