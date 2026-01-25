@@ -15,18 +15,17 @@ const { title, href, desc, date, tags } = Astro.props;
 
 <div class="card m-8">
     <div class="card-body p-4">
-        <h2 class="card-title"><a href={href}>{title}</a></h2>
+        <h2 class="card-title text-2xl font-normal">
+            <a href={href}>{title}</a>
+        </h2>
         {desc && <p>{desc}</p>}
         <div
             class="card-actions flex flex-col items-start justify-start gap-4 md:flex-row md:items-center"
         >
             <!-- Date Item -->
             <div class="flex items-center gap-1">
-                <Icon
-                    name="material-symbols:date-range-outline"
-                    class="text-base"
-                />
-                <span>{date}</span>
+                <Icon name="material-symbols:date-range-outline" size="16px" />
+                <time>{new Date(date).toDateString()}</time>
             </div>
             <!-- Tags Item -->
             {
@@ -34,7 +33,7 @@ const { title, href, desc, date, tags } = Astro.props;
                     <div class="flex shrink-0 flex-wrap items-center gap-1">
                         <Icon
                             name="material-symbols:label-outline"
-                            class="text-base"
+                            size="16px"
                         />
                         {tags.map((tag) => (
                             <TagBadge name={tag} />

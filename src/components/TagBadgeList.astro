@@ -1,0 +1,12 @@
+---
+import TagBadge from "./TagBadge.astro";
+interface Props {
+    tags: string[];
+}
+
+const { tags } = Astro.props;
+---
+
+<div class="flex shrink-0 flex-wrap items-center gap-1">
+    {tags.map((tag: string) => <TagBadge name={tag} />)}
+</div>

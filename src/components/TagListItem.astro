@@ -5,10 +5,9 @@ interface Props {
     index: number;
     name: string;
     desc?: string;
-    count: number;
 }
 
-const { name, desc, count } = Astro.props;
+const { name, desc } = Astro.props;
 ---
 
 <li class="list-row items-center">

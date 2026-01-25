@@ -6,8 +6,6 @@ interface Props {
 const { name } = Astro.props;
 ---
 
-<span
-    class="mr-2 mb-2 inline-block rounded-full bg-gray-200 px-3 py-1 text-sm font-semibold text-gray-700"
->
+<span class="text-sm font-normal">
     <a href={`/tags/${name}`}>{`#${name}`}</a>
 </span>

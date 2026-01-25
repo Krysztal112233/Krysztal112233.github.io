@@ -5,6 +5,7 @@ import I from "../components/PostIndexItem.astro";
 import MainFrame from "../layout/MainFrame.astro";
 
 const allPosts = await getCollection("posts");
+allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
 <MainFrame>
