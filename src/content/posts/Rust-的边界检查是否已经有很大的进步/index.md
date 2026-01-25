@@ -2,10 +2,10 @@
 title: Rust 的边界检查是否已经有很大的进步
 date: 2025-07-08 02:24:09
 tags:
-  - 技术
-  - 捣鼓
-  - 笔记
-  - PoC
+    - 技术
+    - 捣鼓
+    - 笔记
+    - PoC
 ---
 
 最近又听到有人说 Rust
@@ -139,8 +139,6 @@ fn main() {
 ### 附录
 
 1.完整的 Rust `1.88.0` 输出汇编
-
-{% spoiler %}
 
 ```asm
 	.file	"boundtest.375cfcca86286996-cgu.0"
@@ -610,11 +608,7 @@ main:
 	.section	".note.GNU-stack","",@progbits
 ```
 
-{% endspoiler %}
-
 2.完整的 Rust `1.42.0` 输出汇编
-
-{% spoiler %}
 
 ```asm
 	.text
@@ -1038,5 +1032,3 @@ main:
 
 	.section	".note.GNU-stack","",@progbits
 ```
-
-{% endspoiler %}

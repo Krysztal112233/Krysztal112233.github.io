@@ -55,9 +55,5 @@ rustflags = [
 rustflags = ["-C", "link-arg=-nostartfiles"]
 ```
 
-{% note warning %}
-
-注意，由于该系列的文章是面向 x64 的，所以无法通过基于 Apple Silicon 的 macOS
-的编译，因此暂时关闭了 macOS 的编译也暂时不支持他。
-
-{% endnote %}
+> [!NOTE]
+> 注意，由于该系列的文章是面向 x64 的，所以无法通过基于 Apple Silicon 的 macOS 的编译，因此暂时关闭了 macOS 的编译也暂时不支持他。

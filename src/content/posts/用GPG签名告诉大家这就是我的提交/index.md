@@ -15,15 +15,13 @@ tags:
 
 好吧，还是搞搞 GPG 签名比较稳妥，虽然我的项目也不会有人这么搞就是了
 
-{% note success %}
-本来这是 GitHub 很早前就有的漏洞了，他们说这个不影响。现在闹大了才勉强对这种情况标了个游离提交
-{% endnote %}
+> [!NOTE]
+> 本来这是 GitHub 很早前就有的漏洞了，他们说这个不影响。现在闹大了才勉强对这种情况标了个游离提交
 
 Git 本身使用邮箱标注是谁的提交，这样就意味着可以随意冒充。但是新版本 Git 支持了 GPG 签名，这样就算 SSH Key 泄露了也能保证这个提交是你的了
 
-{% note success %}
-Windows 的 git 已经包含了 GPG，不需要额外安装了。但是需要在 GitBash 下才能使用。不过 VSCode 也可以使用就是了
-{% endnote %}
+> [!NOTE]
+> Windows 的 git 已经包含了 GPG，不需要额外安装了。但是需要在 GitBash 下才能使用。不过 VSCode 也可以使用就是了
 
 ## 验证是否已经有了 GPG 密钥
 
@@ -43,9 +41,8 @@ gpg --full-generate-key
 
 其实按照 GitHub 的工作原理的话，邮箱也必须是在 GitHub **验证**过的
 
-{% note warning %}
-密钥长度这一项一定要写 4096 长度，这是 [GitHub 的要求](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key)
-{% endnote %}
+> [!NOTE]
+> 密钥长度这一项一定要写 4096 长度，这是 [GitHub 的要求](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key)
 
 ## 导出公匙
 

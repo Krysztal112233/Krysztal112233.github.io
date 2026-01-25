@@ -2,10 +2,10 @@
 title: Paradoxical 札记
 date: 2025-05-12 23:35:48
 tags:
-  - 技术
-  - 捣鼓
-  - 设计
-  - PoC
+    - 技术
+    - 捣鼓
+    - 设计
+    - PoC
 ---
 
 最近把 neorg 作为笔记和规划系统有点上头，但苦于没一个好用的
@@ -39,11 +39,8 @@ Text  →  Lexer (RawTokenKind)  →  CST  →  Typed AST/HIR  →  Semantic Ana
 
 ### 阶段 0
 
-{% note success %}
-
-该阶段起始于 **_2025-05-16_**
-
-{% endnote %}
+> [!NOTE]
+> 该阶段起始于 **_2025-05-16_**
 
 在阶段 0 需要实现最基本的功能：解析
 
@@ -52,18 +49,16 @@ Text  →  Lexer (RawTokenKind)  →  CST  →  Typed AST/HIR  →  Semantic Ana
 - 标题
 - 有序/无序列表
 - 文本段
-  - 文本类型 `Paragraph`：这种类型允许使用 neorg 的修饰符例如 `{}` `//` `$||$`
-    等，这些修饰符可以正常执行其对应的功能
-  - 逐字类型 `VerbatimParagrah`: 这种类型的文本段不会处理 neorg
-    的修饰符，所有输入的修饰符都应该原样输出
+    - 文本类型 `Paragraph`：这种类型允许使用 neorg 的修饰符例如 `{}` `//` `$||$`
+      等，这些修饰符可以正常执行其对应的功能
+    - 逐字类型 `VerbatimParagrah`: 这种类型的文本段不会处理 neorg
+      的修饰符，所有输入的修饰符都应该原样输出
 - 标签 `Tag`
 
-{% note info %}
-
-请注意，由于 neorg 设计上要求的**_非歧义_**解析，所有解析失败的内容都应该回归为
-`文本类型 Paragraph`
-
-{% endnote %}
+> [!NOTE]
+>
+> 请注意，由于 neorg 设计上要求的***非歧义***解析，所有解析失败的内容都应该回归为
+> `文本类型 Paragraph`
 
 #### `Token` 设计
 
@@ -168,8 +163,8 @@ fn parse_linending(input: Span) -> IResult<Span, RawToken> {
 
 - 对于 `RawTokenKind::Tag` 我们直接提取 `@` 字符就好
 - 对于 `RawTokenKind::Linending` 我们需要判断并且保留文档里的换行符类型
-  - `\n`：UNIX 平台所使用的换行符
-  - `\r\n`：Windows 平台所使用的换行符
+    - `\n`：UNIX 平台所使用的换行符
+    - `\r\n`：Windows 平台所使用的换行符
 - 对于其他的标点符号，我们引入一个常量 `AVAILIABLE_PUNCT` 表示可以出现在
   `RawTokenKind::Punct` 内的字符（相当于白名单）
 - 如果在以上情况之外，则归类为 `RawTokenKind::NormalChar`
@@ -201,8 +196,6 @@ Ok(Self { text: rope, tokens })
 ```
 
 单元测试也是不可少的一部分，因为包括对于中文的解析是略微麻烦也需要验证的
-
-{% spoiler %}
 
 ```rust
 #[cfg(test)]
@@ -321,5 +314,3 @@ mod tests {
     }
 }
 ```
-
-{% endspoiler %}

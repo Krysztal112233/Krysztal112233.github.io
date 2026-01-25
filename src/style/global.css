@@ -15,3 +15,45 @@ mjx-container[jax="SVG"] {
 code {
     @apply break-all;
 }
+
+/* GitHub 风格的提示块 */
+.admonition {
+    @apply my-4 rounded-r-sm border-l-4 bg-gray-50 p-2 pl-4;
+}
+
+.admonition-title {
+    @apply mb-2 font-semibold text-gray-900;
+}
+
+/* 不同类型的提示块 */
+.admonition.note {
+    @apply border-blue-500 bg-blue-50;
+}
+
+.admonition.note .admonition-title {
+    @apply text-blue-900;
+}
+
+.admonition.warning {
+    @apply border-yellow-500 bg-yellow-50;
+}
+
+.admonition.warning .admonition-title {
+    @apply text-yellow-900;
+}
+
+.admonition.error {
+    @apply border-red-500 bg-red-50;
+}
+
+.admonition.error .admonition-title {
+    @apply text-red-900;
+}
+
+.admonition.tip {
+    @apply border-green-500 bg-green-50;
+}
+
+.admonition.tip .admonition-title {
+    @apply text-green-900;
+}
