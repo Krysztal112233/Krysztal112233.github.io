@@ -18,9 +18,30 @@ code {
 
 /* GitHub 风格的提示块 */
 .admonition {
-    @apply my-4 border-l-4 p-2 pl-4 shadow rounded-r-xl;
+    @apply my-4 rounded-r-xl border-l-4 p-2 pl-4 shadow;
 }
 
 .admonition-title {
     @apply mb-2 font-semibold;
+}
+
+/* 居中 Astro 处理的图片 */
+[data-image-component="true"] {
+    @apply mx-auto block;
+}
+
+/* 确保包含图片的段落也居中 */
+.prose p:has([data-image-component="true"]) {
+    @apply text-center;
+}
+
+/* 通用图片居中样式 */
+.prose img {
+    @apply mx-auto block;
+}
+
+/* 图片容器居中 */
+.prose p img,
+.prose figure img {
+    @apply mx-auto block;
 }

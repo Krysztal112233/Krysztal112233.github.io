@@ -33,7 +33,6 @@ export default defineConfig({
     markdown: {
         remarkPlugins: [
             remarkBlock,
-            remarkRehype,
             [remarkMath, { singleDollarTextMath: false }],
             remarkReadingTime,
             remarkDirective,
@@ -42,6 +41,8 @@ export default defineConfig({
         rehypePlugins: [
             rehypeMathjax,
             rehypeSlug,
+            rehypeInferDescriptionMeta,
+            rehypeDocument,
             [rehypeAutolinkHeadings, { behavior: "append" }],
         ],
     },
