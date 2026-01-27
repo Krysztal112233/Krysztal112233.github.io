@@ -1,0 +1,28 @@
+---
+import { type LinkConfig } from "../config";
+
+type Props = LinkConfig;
+
+const { title, image, intro, link } = Astro.props;
+---
+
+<div class="w-full p-4 lg:w-1/3">
+    <div>
+        <a href={link}>
+            <div
+                class="bg-base-100 flex items-center gap-4 rounded-lg p-4 duration-300 hover:shadow-lg"
+            >
+                <div class="avatar">
+                    <div class="h-12 w-12 rounded-full">
+                        <img src={image} />
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="font-bold">{title}</h2>
+                    <p>{intro}</p>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>

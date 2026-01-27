@@ -1,5 +1,25 @@
 ---
-import PostPage from "../layout/PostPage.astro";
+import { getConfig, type Config, type LinkConfig } from "../config";
+import MainFrame from "../layout/MainFrame.astro";
+import LinkCard from "../components/LinkCard.astro";
+import Article from "../components/Article.astro";
+
+const { links }: Config = await getConfig();
 ---
 
-<PostPage />
+<MainFrame>
+    <Article>
+        <div class="flex shrink-0 flex-row flex-wrap items-center">
+            {
+                links.map(({ title, image, intro, link }: LinkConfig) => (
+                    <LinkCard
+                        title={title}
+                        image={image}
+                        intro={intro}
+                        link={link}
+                    />
+                ))
+            }
+        </div>
+    </Article>
+</MainFrame>

@@ -3,6 +3,11 @@ import "../style/global.css";
 
 import Footer from "../components/Footer.astro";
 import Navigation from "../components/Navigation.astro";
+import { getConfig, type Config } from "../config";
+
+const {
+    site: { description, title },
+}: Config = await getConfig();
 ---
 
 <html lang="zh-CN">
@@ -10,7 +15,9 @@ import Navigation from "../components/Navigation.astro";
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
+    {title && <title>{title}</title>}
+    {title && <meta name="title" content={title} />}
+    {description && <meta name="description" content={description} />}
 
     <body class="flex min-h-screen flex-col">
         <Navigation />

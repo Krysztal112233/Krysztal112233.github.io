@@ -80,6 +80,9 @@ importers:
       sharp:
         specifier: ^0.34.5
         version: 0.34.5
+      smol-toml:
+        specifier: ^1.6.0
+        version: 1.6.0
       tailwindcss:
         specifier: ^4.1.18
         version: 4.1.18
@@ -96,6 +99,9 @@ importers:
       prettier-plugin-tailwindcss:
         specifier: ^0.7.2
         version: 0.7.2(prettier-plugin-astro@0.14.1)(prettier@3.8.1)
+      vite-plugin-toml:
+        specifier: ^0.8.7
+        version: 0.8.7(rollup@4.56.0)
 
 packages:
 
@@ -1206,6 +1212,10 @@ packages:
     resolution: {integrity: sha512-/veY75JbMK4j1yjvuUxuVsiS/hr/4iHs9FTT6cgTexxdE0Ly/glccBAkloH/DofkjRbZU3bnoj38mOmhkZ0lHw==}
     engines: {node: '>=12'}
 
+  eslint-visitor-keys@5.0.0:
+    resolution: {integrity: sha512-A0XeIi7CXU7nPlfHS9loMYEKxUaONu/hTEzHTGba9Huu94Cq1hPivf+DE5erJozZOky0LfvXAyrV/tcswpLI0Q==}
+    engines: {node: ^20.19.0 || ^22.13.0 || >=24}
+
   esm@3.2.25:
     resolution: {integrity: sha512-U1suiZ2oDVWv4zPO56S0NcR5QriEahGtdN2OR6FiOG4WJvcjBVFB0qI4+eKoWFH483PKGuLuu6V8Z4T5g63UVA==}
     engines: {node: '>=6'}
@@ -2178,6 +2188,10 @@ packages:
     resolution: {integrity: sha512-j2Zq4NyQYG5XMST4cbs02Ak8iJUdxRM0XI5QyxXuZOzKOINmWurp3smXu3y5wDcJrptwpSjgXHzIQxR0omXljQ==}
     engines: {node: '>=12.0.0'}
 
+  toml-eslint-parser@1.0.3:
+    resolution: {integrity: sha512-A5F0cM6+mDleacLIEUkmfpkBbnHJFV1d2rprHU2MXNk7mlxHq2zGojA+SRvQD1RoMo9gqjZPWEaKG4v1BQ48lw==}
+    engines: {node: ^20.19.0 || ^22.13.0 || >=24}
+
   trim-lines@3.0.1:
     resolution: {integrity: sha512-kRj8B+YHZCc9kQYdWfJB2/oUl9rA99qbowYYBtr4ui4mZyAQ2JpvVBd/6U2YloATfqBhBTSMhTpgBHtU0Mf3Rg==}
 
@@ -2340,6 +2354,12 @@ packages:
 
   vfile@6.0.3:
     resolution: {integrity: sha512-KzIbH/9tXat2u30jf+smMwFCsno4wHVdNmzFyL+T/L3UGqqk6JKfVqOFOZEpZSHADH1k40ab6NUIXZq422ov3Q==}
+
+  vite-plugin-toml@0.8.7:
+    resolution: {integrity: sha512-7X0XesnDwrrrgtn/GblWcNt+FH8aWnzSIzowYQ7/HNxbzo5KOtCgWVyHjugsiIFhUDRFYqNrj/bmfmX90RXIIA==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    peerDependencies:
+      rollup: ^4.0.0
 
   vite@6.4.1:
     resolution: {integrity: sha512-+Oxm7q9hDoLMyJOYfUYBuHQo+dkAloi33apOPP56pzj+vsdJDzr+j1NISE5pyaAuKL4A3UD34qd0lx5+kfKp2g==}
@@ -3650,6 +3670,8 @@ snapshots:
       '@esbuild/win32-x64': 0.25.12
 
   escape-string-regexp@5.0.0: {}
+
+  eslint-visitor-keys@5.0.0: {}
 
   esm@3.2.25: {}
 
@@ -5172,6 +5194,10 @@ snapshots:
       fdir: 6.5.0(picomatch@4.0.3)
       picomatch: 4.0.3
 
+  toml-eslint-parser@1.0.3:
+    dependencies:
+      eslint-visitor-keys: 5.0.0
+
   trim-lines@3.0.1: {}
 
   trough@2.2.0: {}
@@ -5298,6 +5324,12 @@ snapshots:
     dependencies:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
+
+  vite-plugin-toml@0.8.7(rollup@4.56.0):
+    dependencies:
+      '@rollup/pluginutils': 5.3.0(rollup@4.56.0)
+      rollup: 4.56.0
+      toml-eslint-parser: 1.0.3
 
   vite@6.4.1(@types/node@25.0.10)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.2):
     dependencies:

@@ -3,12 +3,12 @@
 @plugin "daisyui";
 
 mjx-container[jax="SVG"][display="true"] {
-    display: flex !important;
+    display: flex;
     justify-content: center;
 }
 
 mjx-container[jax="SVG"] {
-    display: inline-block !important;
+    display: inline-block;
     vertical-align: -2.5px;
 }
 
@@ -25,23 +25,6 @@ code {
     @apply mb-2 font-semibold;
 }
 
-/* 居中 Astro 处理的图片 */
 [data-image-component="true"] {
-    @apply mx-auto block;
-}
-
-/* 确保包含图片的段落也居中 */
-.prose p:has([data-image-component="true"]) {
-    @apply text-center;
-}
-
-/* 通用图片居中样式 */
-.prose img {
-    @apply mx-auto block;
-}
-
-/* 图片容器居中 */
-.prose p img,
-.prose figure img {
     @apply mx-auto block;
 }

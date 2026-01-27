@@ -1,0 +1,40 @@
+[site]
+title = "See you soon."
+description = ""
+slogan = "Perfer et obdura, dolor hic tibi proderit olim."
+
+[[links]]
+image = "https://cdn.jsdelivr.net/gh/DazeCake/image-host/blog/20210104222504.jpg"
+intro = "奋斗机"
+link = "http://blog.dazecake.moe/"
+title = "蛋糕的博客"
+
+[[links]]
+image = "https://gravatar.loli.net/avatar/f7e8af6d341b76ad3de6757a8f86f2b4?d=mp&v=1.3.10"
+intro = "RainChan"
+link = "https://mzdluo123.github.io/"
+title = "雨酱的博客"
+
+[[links]]
+image = "https://blog.hanbings.io/img/avatar.jpeg"
+intro = "猫"
+link = "https://blog.hanbings.io"
+title = "寒冰的博客"
+
+[[links]]
+image = "https://avatars.githubusercontent.com/u/72690879?v=4"
+intro = "小心编号为31的绿色猫狐实验体!"
+link = "https://blog.cat0x1f.org/"
+title = "猫狐森月的小窝"
+
+[[links]]
+image = "https://static.glassfoxowo.com/img/starsky.avif"
+intro = "玻狸的笔记本，简称GFNB"
+link = "https://note.glassfoxowo.com/"
+title = "GF Notebook"
+
+[[links]]
+image = "https://avatars.githubusercontent.com/u/91669733"
+intro = "「Puca」或「koto」"
+link = "https://koto.cc/"
+title = "Koto's Site"
