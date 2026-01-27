@@ -20,7 +20,7 @@
         "useEditorconfig": true
     },
     "linter": {
-        "enabled": false
+        "enabled": true
     },
     "javascript": {
         "formatter": {
