@@ -59,21 +59,9 @@ importers:
       rehype-autolink-headings:
         specifier: ^7.1.0
         version: 7.1.0
-      rehype-document:
-        specifier: ^7.0.3
-        version: 7.0.3
-      rehype-infer-description-meta:
-        specifier: ^2.0.0
-        version: 2.0.0
       rehype-mathjax:
         specifier: ^7.1.0
         version: 7.1.0
-      rehype-meta:
-        specifier: ^4.0.1
-        version: 4.0.1
-      rehype-slug:
-        specifier: ^6.0.0
-        version: 6.0.0
       remark-directive:
         specifier: ^4.0.0
         version: 4.0.0
@@ -1319,17 +1307,11 @@ packages:
   h3@1.15.5:
     resolution: {integrity: sha512-xEyq3rSl+dhGX2Lm0+eFQIAzlDN6Fs0EcC4f7BNUmzaRX/PTzeuM+Tr2lHB8FoXggsQIeXLj8EDVgs5ywxyxmg==}
 
-  hast-util-excerpt@2.0.0:
-    resolution: {integrity: sha512-3hM4U3Tjvx8bn+KGM51BA2VL6poq3AyOHguq3dzDjI74lxYZfOV1zAEEiSbcGd8CXgx9N9JRS5MlS4izTWJRig==}
-
   hast-util-from-html@2.0.3:
     resolution: {integrity: sha512-CUSRHXyKjzHov8yKsQjGOElXy/3EKpyX56ELnkHH34vDVw1N1XSQ1ZcAvTyAPtGqLTuKP/uxM+aLkSPqF/EtMw==}
 
   hast-util-from-parse5@8.0.3:
     resolution: {integrity: sha512-3kxEVkEKt0zvcZ3hCRYI8rqrgwtlIOFMWkbclACvjlDw8Li9S2hk/d51OI0nr/gIpdMHNepwgOKqZ/sy0Clpyg==}
-
-  hast-util-from-selector@3.0.1:
-    resolution: {integrity: sha512-CA2dwcsAS6a7DNZq8HT5fNP4FzUq2PUpQpKnAtOCmfTk429jR0RtasLSMlFA1FNKd8lgfeCIAFl3/vD95be8Lg==}
 
   hast-util-has-property@3.0.0:
     resolution: {integrity: sha512-MNilsvEKLFpV604hwfhVStK0usFY/QmM5zX16bo7EjnAEGofr5YyI37kzopBlZJkHD4t887i+q/C8/tr5Q94cA==}
@@ -1367,14 +1349,8 @@ packages:
   hast-util-to-text@4.0.2:
     resolution: {integrity: sha512-KK6y/BN8lbaq654j7JgBydev7wuNMcID54lkRav1P0CaE1e47P72AWWPiGKXTJU271ooYzcvTAn/Zt0REnvc7A==}
 
-  hast-util-truncate@2.0.0:
-    resolution: {integrity: sha512-QjtUhkt0hT75dHwwTYS+E9Rge12IVClGUErJgss7q7EewBuSr6LoGjq7nPp3R6BThqWJ6CbarPVPCbklwnUf/g==}
-
   hast-util-whitespace@3.0.0:
     resolution: {integrity: sha512-88JUN06ipLwsnv+dVn+OIYOvAuvBMy/Qoi6O7mQHxdPXpjy+Cd6xRkWwux7DKO+4sYILtLBRIKgsdpS2gQc7qw==}
-
-  hastscript@8.0.0:
-    resolution: {integrity: sha512-dMOtzCEd3ABUeSIISmrETiKuyydk1w0pa+gE/uormcTpSYuaNJPbX1NU3JLyscSLjwAQM8bWMhhIlnCqnRvDTw==}
 
   hastscript@9.0.1:
     resolution: {integrity: sha512-g7df9rMFX/SPi34tyGCyUBREQoKkapwdY/T04Qn9TDWfHhAYt4/I0gMVirzK5wEzeUqIjEB+LXC/ypb7Aqno5w==}
@@ -1971,9 +1947,6 @@ packages:
     resolution: {integrity: sha512-NxNv/kLguCA7p3jE8oL2aEBsrJWgAakBpgmgK6lpPWV+WuOmY6r2/zbAVnP+T8bQlA0nzHXSJSJW0Hq7ylaD2Q==}
     engines: {node: '>= 6'}
 
-  property-information@6.5.0:
-    resolution: {integrity: sha512-PgTgs/BlvHxOu8QuEN7wi5A0OmXaBcHpmCSTehcs6Uuu9IkDIEo13Hy7n898RHfrQ49vKCoGeWZSaAK01nwVig==}
-
   property-information@7.1.0:
     resolution: {integrity: sha512-TwEZ+X+yCJmYfL7TPUOcvBZ4QfoT5YenQiJuX//0th53DE6w0xxLEtfK3iyryQFddXuvkIk51EEgrJQ0WJkOmQ==}
 
@@ -2023,20 +1996,11 @@ packages:
   rehype-autolink-headings@7.1.0:
     resolution: {integrity: sha512-rItO/pSdvnvsP4QRB1pmPiNHUskikqtPojZKJPPPAVx9Hj8i8TwMBhofrrAYRhYOOBZH9tgmG5lPqDLuIWPWmw==}
 
-  rehype-document@7.0.3:
-    resolution: {integrity: sha512-g5zq6i2FwWVBVdyVi0Jw/5MRvsHj3wuJCn+QeyOjm29QBpTG4r1iUElyH9GhfWx5fB27ZEApA53RdAiYGBb4zQ==}
-
   rehype-expressive-code@0.41.6:
     resolution: {integrity: sha512-aBMX8kxPtjmDSFUdZlAWJkMvsQ4ZMASfee90JWIAV8tweltXLzkWC3q++43ToTelI8ac5iC0B3/S/Cl4Ql1y2g==}
 
-  rehype-infer-description-meta@2.0.0:
-    resolution: {integrity: sha512-8MZjKRfQiNB5+Qpt0fS9bpjcKe+nhF5GOTHo0M5e+XdStDpcZxkSMMnCfNIlpNaOyIQ7Hu1qEaUxm8ZL1lYI1g==}
-
   rehype-mathjax@7.1.0:
     resolution: {integrity: sha512-mJHNpoqCC5UZ24OKx0wNjlzV18qeJz/Q/LtEjxXzt8vqrZ1Z3GxQnVrHcF5/PogcXUK8cWwJ4U/LWOQWEiABHw==}
-
-  rehype-meta@4.0.1:
-    resolution: {integrity: sha512-nLwA17+GbtBYi3C1KSrFR8JlqXv76mz185U//xDEAYgzE3g/bSD6WKSXva1W95ttzouUCJwA09X3AQZIi3R+Nw==}
 
   rehype-parse@9.0.1:
     resolution: {integrity: sha512-ksCzCD0Fgfh7trPDxr2rSylbwq9iYDkSn8TCDmEJ49ljEUBxDVCzCHv7QNzZOfODanX4+bWQ4WZqLCRWYLfhag==}
@@ -2046,9 +2010,6 @@ packages:
 
   rehype-recma@1.0.0:
     resolution: {integrity: sha512-lqA4rGUf1JmacCNWWZx0Wv1dHqMwxzsDWYMTowuplHF3xH0N/MmrZ/G3BDZnzAkRmxDadujCjaKM2hqYdCBOGw==}
-
-  rehype-slug@6.0.0:
-    resolution: {integrity: sha512-lWyvf/jwu+oS5+hL5eClVd3hNdmwM1kAC0BUvEGD19pajQMIzcNUd/k9GsfQ+FfECvX+JE+e9/btsKH0EjJT6A==}
 
   rehype-stringify@10.0.1:
     resolution: {integrity: sha512-k9ecfXHmIPuFVI61B9DeLPN0qFHfawM6RsuX48hoqlaKSF61RskNjSm1lI8PhBEM0MRdLxVVm4WmTqJQccH9mA==}
@@ -3801,11 +3762,6 @@ snapshots:
       ufo: 1.6.3
       uncrypto: 0.1.3
 
-  hast-util-excerpt@2.0.0:
-    dependencies:
-      '@types/hast': 3.0.4
-      hast-util-truncate: 2.0.0
-
   hast-util-from-html@2.0.3:
     dependencies:
       '@types/hast': 3.0.4
@@ -3825,13 +3781,6 @@ snapshots:
       vfile: 6.0.3
       vfile-location: 5.0.3
       web-namespaces: 2.0.1
-
-  hast-util-from-selector@3.0.1:
-    dependencies:
-      '@types/hast': 3.0.4
-      css-selector-parser: 3.3.0
-      devlop: 1.1.0
-      hastscript: 9.0.1
 
   hast-util-has-property@3.0.0:
     dependencies:
@@ -3959,23 +3908,9 @@ snapshots:
       hast-util-is-element: 3.0.0
       unist-util-find-after: 5.0.0
 
-  hast-util-truncate@2.0.0:
-    dependencies:
-      '@types/hast': 3.0.4
-      '@ungap/structured-clone': 1.3.0
-      micromark-util-character: 2.1.1
-
   hast-util-whitespace@3.0.0:
     dependencies:
       '@types/hast': 3.0.4
-
-  hastscript@8.0.0:
-    dependencies:
-      '@types/hast': 3.0.4
-      comma-separated-tokens: 2.0.3
-      hast-util-parse-selector: 4.0.0
-      property-information: 6.5.0
-      space-separated-tokens: 2.0.2
 
   hastscript@9.0.1:
     dependencies:
@@ -4834,8 +4769,6 @@ snapshots:
       kleur: 3.0.3
       sisteransi: 1.0.5
 
-  property-information@6.5.0: {}
-
   property-information@7.1.0: {}
 
   pump@3.0.3:
@@ -4901,27 +4834,9 @@ snapshots:
       unified: 11.0.5
       unist-util-visit: 5.1.0
 
-  rehype-document@7.0.3:
-    dependencies:
-      '@types/hast': 3.0.4
-      hastscript: 8.0.0
-      unified: 11.0.5
-      vfile: 6.0.3
-
   rehype-expressive-code@0.41.6:
     dependencies:
       expressive-code: 0.41.6
-
-  rehype-infer-description-meta@2.0.0:
-    dependencies:
-      '@types/hast': 3.0.4
-      hast-util-excerpt: 2.0.0
-      hast-util-select: 6.0.4
-      hast-util-to-text: 4.0.2
-      hast-util-truncate: 2.0.0
-      unified: 11.0.5
-      unist-util-remove-position: 5.0.0
-      vfile: 6.0.3
 
   rehype-mathjax@7.1.0:
     dependencies:
@@ -4932,14 +4847,6 @@ snapshots:
       mathjax-full: 3.2.2
       unified: 11.0.5
       unist-util-visit-parents: 6.0.2
-      vfile: 6.0.3
-
-  rehype-meta@4.0.1:
-    dependencies:
-      '@types/hast': 3.0.4
-      hast-util-from-selector: 3.0.1
-      hast-util-select: 6.0.4
-      hastscript: 9.0.1
       vfile: 6.0.3
 
   rehype-parse@9.0.1:
@@ -4961,14 +4868,6 @@ snapshots:
       hast-util-to-estree: 3.1.3
     transitivePeerDependencies:
       - supports-color
-
-  rehype-slug@6.0.0:
-    dependencies:
-      '@types/hast': 3.0.4
-      github-slugger: 2.0.0
-      hast-util-heading-rank: 3.0.0
-      hast-util-to-string: 3.0.1
-      unist-util-visit: 5.1.0
 
   rehype-stringify@10.0.1:
     dependencies:
