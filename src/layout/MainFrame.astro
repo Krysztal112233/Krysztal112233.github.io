@@ -4,13 +4,14 @@ import "../style/global.css";
 import Footer from "../components/Footer.astro";
 import Navigation from "../components/Navigation.astro";
 import { getConfig, type Config } from "../config";
+import { ClientRouter } from "astro:transitions";
 
 const {
     site: { description, title },
 }: Config = await getConfig();
 ---
 
-<html lang="zh-CN">
+<html lang="zh-CN" class="hidden-scrollbar">
     <link href="https://fonts.cdnfonts.com/css/victor-mono" rel="stylesheet" />
 
     <meta charset="utf-8" />
@@ -18,6 +19,8 @@ const {
     {title && <title>{title}</title>}
     {title && <meta name="title" content={title} />}
     {description && <meta name="description" content={description} />}
+
+    <ClientRouter transition:animate="slide" />
 
     <body class="flex min-h-screen flex-col">
         <Navigation />

@@ -2,6 +2,15 @@
 @plugin "@tailwindcss/typography";
 @plugin "daisyui";
 
+.hidden-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.hidden-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
 mjx-container[jax="SVG"][display="true"] {
     display: flex;
     justify-content: center;
