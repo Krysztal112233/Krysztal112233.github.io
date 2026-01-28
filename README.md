@@ -4,7 +4,8 @@ Astro based, keep clean and beautiful.
 
 ## Theme
 
-> [!note] WIP
+> [!NOTE]
+>
 > THIS THEME STILL WORK IN PROGRESS.
 
 I called this theme `Diorite`.
