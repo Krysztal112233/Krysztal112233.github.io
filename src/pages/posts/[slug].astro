@@ -16,7 +16,7 @@ const { post } = Astro.props as any;
 const { Content } = (await post.render()) as any;
 ---
 
-<MainFrame>
+<MainFrame subtitle={post.data.title}>
     <Article>
         <div class="mx-auto max-w-11/12 p-4 pt-8">
             <h1 class="mb-4 text-3xl font-bold">{post.data.title}</h1>

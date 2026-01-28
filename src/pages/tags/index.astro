@@ -12,11 +12,7 @@ const tags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())];
     <Article>
         <div class="pt-1">
             <ul class="list">
-                {
-                    tags.map((tag, index) => (
-                        <I name={tag} index={index} count={10} />
-                    ))
-                }
+                {tags.map((tag, index) => <I name={tag} index={index} />)}
             </ul>
         </div>
     </Article>

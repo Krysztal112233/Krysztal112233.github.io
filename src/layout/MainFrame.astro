@@ -6,9 +6,17 @@ import Navigation from "../components/Navigation.astro";
 import { getConfig, type Config } from "../config";
 import { ClientRouter } from "astro:transitions";
 
+interface Props {
+    subtitle?: string;
+}
+
 const {
     site: { description, title },
 }: Config = await getConfig();
+
+const { subtitle } = Astro.props;
+
+const pageTitle = subtitle ? `${title} - ${subtitle}` : title;
 ---
 
 <html lang="zh-CN" class="hidden-scrollbar">
@@ -16,8 +24,8 @@ const {
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {title && <title>{title}</title>}
-    {title && <meta name="title" content={title} />}
+    <title>{pageTitle}</title>
+    <meta name="title" content={pageTitle} />
     {description && <meta name="description" content={description} />}
 
     <ClientRouter transition:animate="slide" />
