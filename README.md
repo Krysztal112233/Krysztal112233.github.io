@@ -11,6 +11,7 @@ I called this theme `Diorite`.
 
 ## Roadmap
 
+- [ ] Mermaid Intergration
 - [ ] KiCanvas Intergration
 - [ ] Paging
 - [ ] Utterances Comment Widget
