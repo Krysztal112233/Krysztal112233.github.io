@@ -32,7 +32,7 @@ const pageTitle = subtitle ? `${title} - ${subtitle}` : title;
     <ClientRouter />
 
     <body class="flex min-h-screen flex-col">
-        <Navigation />
+        <Navigation title={title} />
 
         <main class="flex-1">
             <slot />

@@ -2,7 +2,12 @@
 import N from "./NavigationItem.astro";
 import I from "./IconButton.astro";
 import NF from "./NavigationFolder.astro";
-// import ThemeSwitcher from "./ThemeSwitcher.astro";
+
+interface Props {
+    title: string;
+}
+
+const { title }: Props = Astro.props;
 ---
 
 <div
@@ -13,8 +18,9 @@ import NF from "./NavigationFolder.astro";
             class="btn btn-ghost text-xl italic"
             href="/"
             style="font-family: Victor Mono; font-display: swap;"
-            >See you soon.</a
         >
+            {title}
+        </a>
     </div>
 
     <NF>
