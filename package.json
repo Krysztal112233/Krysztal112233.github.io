@@ -21,6 +21,7 @@
         "astro-expressive-code": "^0.41.6",
         "astro-icon": "^1.1.5",
         "daisyui": "^5.5.14",
+        "expressive-code-language-badge": "^1.1.0",
         "mdast-util-to-string": "^4.0.0",
         "prettier": "^3.8.1",
         "prettier-plugin-astro": "^0.14.1",

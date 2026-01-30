@@ -13,7 +13,7 @@
     },
 
     "files": {
-        "includes": ["**", "!**/*.astro"]
+        "includes": ["**", "!**/*.astro", "!./src/"]
     },
     "formatter": {
         "enabled": true,

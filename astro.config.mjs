@@ -1,11 +1,12 @@
-import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections";
-import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
-import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
+import icon from "astro-icon";
+import tailwindcss from "@tailwindcss/vite";
 
 // expressive-code
 import expressiveCode from "astro-expressive-code";
-import icon from "astro-icon";
+import { pluginLanguageBadge } from "expressive-code-language-badge";
+import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
+import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections";
 
 // rehype
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -20,7 +21,11 @@ import { remarkReadingTime } from "./src/plugin/reading-time.mjs";
 export default defineConfig({
     integrations: [
         expressiveCode({
-            plugins: [pluginCollapsibleSections(), pluginLineNumbers()],
+            plugins: [
+                pluginCollapsibleSections(),
+                pluginLanguageBadge(),
+                pluginLineNumbers(),
+            ],
             themes: ["everforest-light"],
         }),
 
