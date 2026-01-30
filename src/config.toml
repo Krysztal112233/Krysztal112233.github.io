@@ -1,7 +1,9 @@
 [site]
-title = "See you soon."
+title = "See you soon"
 description = ""
 slogan = "Perfer et obdura, dolor hic tibi proderit olim."
+author = "Krysztal Huang"
+
 
 [[links]]
 image = "https://cdn.jsdelivr.net/gh/DazeCake/image-host/blog/20210104222504.jpg"

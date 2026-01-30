@@ -11,7 +11,7 @@ interface Props {
 }
 
 const {
-    site: { description, title },
+    site: { description, title, author },
 }: Config = await getConfig();
 
 const { subtitle } = Astro.props;
@@ -27,6 +27,7 @@ const pageTitle = subtitle ? `${title} - ${subtitle}` : title;
     <title>{pageTitle}</title>
     <meta name="title" content={pageTitle} />
     {description && <meta name="description" content={description} />}
+    {author && <meta name="author" content={author} />}
 
     <ClientRouter />
 

@@ -6,6 +6,7 @@ export interface SiteConfig {
     title: string;
     description: string;
     slogan: string;
+    author?: string;
 }
 
 export interface LinkConfig {
@@ -25,5 +26,5 @@ export async function getConfig(): Promise<Config> {
 
     const config = data.toString();
 
-    return TOML.parse(config) as any as Config;
+    return TOML.parse(config) as object as Config;
 }
