@@ -19,7 +19,7 @@ const { subtitle } = Astro.props;
 const pageTitle = subtitle ? `${title} - ${subtitle}` : title;
 ---
 
-<html lang="zh-CN" class="hidden-scrollbar">
+<html lang="zh-CN" class="hidden-scrollbar" data-theme="retro">
     <link href="https://fonts.cdnfonts.com/css/victor-mono" rel="stylesheet" />
 
     <meta charset="utf-8" />
@@ -28,7 +28,7 @@ const pageTitle = subtitle ? `${title} - ${subtitle}` : title;
     <meta name="title" content={pageTitle} />
     {description && <meta name="description" content={description} />}
 
-    <ClientRouter transition:animate="slide" />
+    <ClientRouter />
 
     <body class="flex min-h-screen flex-col">
         <Navigation />
