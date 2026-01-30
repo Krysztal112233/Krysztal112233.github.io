@@ -32,6 +32,9 @@ const pageTitle = subtitle ? `${title} - ${subtitle}` : title;
     <ClientRouter />
 
     <body class="flex min-h-screen flex-col">
+        <progress
+            class="progress fixed z-20 hidden h-1 -space-x-10"
+            id="progress"></progress>
         <Navigation title={title} />
 
         <main class="flex-1">
@@ -39,5 +42,14 @@ const pageTitle = subtitle ? `${title} - ${subtitle}` : title;
         </main>
 
         <Footer />
+
+        <script is:inline>
+            document.addEventListener("astro:before-preparation", (event) => {
+                document.getElementById("progress").classList.remove("hidden");
+            });
+            document.addEventListener("astro:after-preparation", (event) => {
+                document.getElementById("progress").classList.add("hidden");
+            });
+        </script>
     </body>
 </html>
