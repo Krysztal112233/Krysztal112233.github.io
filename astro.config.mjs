@@ -17,8 +17,14 @@ import remarkBlock from "remark-github-beta-blockquote-admonitions";
 import remarkMath from "remark-math";
 import remarkToc from "remark-toc";
 import { remarkReadingTime } from "./src/plugin/reading-time.mjs";
+import { getConfig } from "./src/config";
+
+const {
+    site: { site },
+} = await getConfig();
 
 export default defineConfig({
+    site: site,
     integrations: [
         expressiveCode({
             plugins: [

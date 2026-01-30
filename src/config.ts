@@ -3,6 +3,7 @@ import TOML from "smol-toml";
 import fs from "node:fs/promises";
 
 export interface SiteConfig {
+    site: string;
     title: string;
     description: string;
     slogan: string;
