@@ -21,6 +21,7 @@ export default defineConfig({
     integrations: [
         expressiveCode({
             plugins: [pluginCollapsibleSections(), pluginLineNumbers()],
+            themes: ["everforest-light"],
         }),
 
         icon(),
