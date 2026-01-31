@@ -36,6 +36,6 @@ code {
     @apply mb-2 font-semibold;
 }
 
-[data-image-component="true"] {
-    @apply mx-auto block;
+p > img[loading="lazy"] {
+    @apply mx-auto block flex;
 }
