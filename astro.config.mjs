@@ -40,7 +40,7 @@ export default defineConfig({
     markdown: {
         remarkPlugins: [
             remarkBlock,
-            [remarkMath, { singleDollarTextMath: false }],
+            [remarkMath, { singleDollarTextMath: true }],
             remarkReadingTime,
             [remarkToc, { heading: "contents" }],
         ],

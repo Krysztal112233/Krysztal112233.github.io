@@ -14,7 +14,7 @@
 }
 
 mjx-container[jax="SVG"][display="true"] {
-    display: flex;
+    display: flex !important;
     justify-content: center;
 }
 
