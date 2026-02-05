@@ -1,4 +1,6 @@
 ---
+import { getConfig } from "../config.ts";
+
 import N from "./NavigationItem.astro";
 import I from "./IconButton.astro";
 import NF from "./NavigationFolder.astro";
@@ -6,6 +8,8 @@ import NF from "./NavigationFolder.astro";
 interface Props {
     title: string;
 }
+
+const { navi } = await getConfig();
 
 const { title }: Props = Astro.props;
 ---
@@ -24,12 +28,14 @@ const { title }: Props = Astro.props;
     </div>
 
     <NF>
-        <N href="/" label="首页" icon="material-symbols:home-outline" />
-        <N href="/about/" label="关于" icon="material-symbols:person-outline" />
-        <N href="/tags/" label="标签" icon="material-symbols:tag" />
-        <N href="/links/" label="友链" icon="material-symbols:link-2" />
-
-        <I icon="material-symbols:rss-feed-rounded" />
-        <!-- <ThemeSwitcher /> -->
+        {
+            navi.map(({ icon, href, label }) => {
+                if (label === undefined) {
+                    return <I icon={icon} href={href} />;
+                } else {
+                    return <N href={href} label={label} icon={icon} />;
+                }
+            })
+        }
     </NF>
 </div>

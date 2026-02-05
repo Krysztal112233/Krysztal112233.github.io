@@ -5,6 +5,30 @@ description = ""
 slogan = "Perfer et obdura, dolor hic tibi proderit olim."
 author = "Krysztal Huang"
 
+[[navi]]
+href = "/"
+label = "首页"
+icon = "material-symbols:home-outline"
+
+[[navi]]
+href = "/about/"
+label = "关于"
+icon = "material-symbols:person-outline"
+
+[[navi]]
+href = "/tags/"
+label = "标签"
+icon = "material-symbols:tag"
+
+[[navi]]
+href = "/links/"
+label = "友链"
+icon = "material-symbols:link-2"
+
+[[navi]]
+icon = "material-symbols:rss-feed-rounded"
+href = "/rss.xml"
+
 [[links]]
 image = "https://cdn.jsdelivr.net/gh/DazeCake/image-host/blog/20210104222504.jpg"
 intro = "奋斗机"

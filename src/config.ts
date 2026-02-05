@@ -17,9 +17,16 @@ export interface LinkConfig {
     title: string;
 }
 
+export interface NaviConfig {
+    icon: string;
+    href: string;
+    label?: string;
+}
+
 export interface Config {
     site: SiteConfig;
     links: LinkConfig[];
+    navi: NaviConfig[];
 }
 
 export async function getConfig(): Promise<Config> {
