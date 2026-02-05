@@ -1,0 +1,25 @@
+---
+import { getCollection } from "astro:content";
+import LinkCard from "../components/LinkCard.astro";
+import MainFrame from "../layout/MainFrame.astro";
+
+const allPosts = await getCollection("posts");
+allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<MainFrame>
+    <div class="flex min-h-[80vh] items-center justify-center">
+        <div
+            class="w-full rounded-xl shadow-xl duration-300 hover:shadow-2xl md:w-10/12 2xl:w-1/2"
+        >
+            <div class="pt-1 pb-1">
+                <LinkCard
+                    title="每夜 JDK 构建"
+                    image="https://openjdk.org/images/duke-plug.png"
+                    intro="提供多个 JDK 试验项目的构建"
+                    link="https://jdks.krysztal.dev"
+                />
+            </div>
+        </div>
+    </div>
+</MainFrame>

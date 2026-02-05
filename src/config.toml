@@ -26,6 +26,11 @@ label = "友链"
 icon = "material-symbols:link-2"
 
 [[navi]]
+icon = "material-symbols:service-toolbox-outline"
+label = "工具"
+href = "/tool"
+
+[[navi]]
 icon = "material-symbols:rss-feed-rounded"
 href = "/rss.xml"
 
