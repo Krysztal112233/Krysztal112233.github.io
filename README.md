@@ -10,6 +10,12 @@ Astro based, keep clean and beautiful.
 
 I called this theme `Diorite`.
 
+## Usage
+
+I provided some utils to generate or process post:
+
+- pnpm new "<title>": You can generate new post via this command.
+
 ## Roadmap
 
 - [ ] Mermaid Intergration
