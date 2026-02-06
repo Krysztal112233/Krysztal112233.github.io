@@ -75,3 +75,9 @@ image = "https://avatars.githubusercontent.com/u/66528027?v=4"
 intro = "这难道不神奇吗点击即可进入银帕"
 link = "https://tt432.github.io/"
 title = "千久银窝"
+
+[[links]]
+image = "https://cdn.gzti.me/avatar/Icon_2021.png"
+intro = "Walking on the Time Axis."
+link = "https://blog.gzti.me"
+title = "GZTime's Blog"
