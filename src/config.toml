@@ -35,9 +35,9 @@ icon = "material-symbols:rss-feed-rounded"
 href = "/rss.xml"
 
 [[links]]
-image = "https://cdn.jsdelivr.net/gh/DazeCake/image-host/blog/20210104222504.jpg"
+image = "https://pic-1253345461.cos.ap-shanghai.myqcloud.com/20260305132849548.svg"
 intro = "奋斗机"
-link = "http://blog.dazecake.moe/"
+link = "http://blog.dazecake.cn/"
 title = "蛋糕的博客"
 
 [[links]]
