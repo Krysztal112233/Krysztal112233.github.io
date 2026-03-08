@@ -19,6 +19,8 @@ import remarkToc from "remark-toc";
 import { remarkReadingTime } from "./src/plugin/reading-time.mjs";
 import { getConfig } from "./src/config";
 
+import sitemap from "@astrojs/sitemap";
+
 const {
     site: { site },
 } = await getConfig();
@@ -34,8 +36,8 @@ export default defineConfig({
             ],
             themes: ["everforest-light"],
         }),
-
         icon(),
+        sitemap(),
     ],
     markdown: {
         remarkPlugins: [
@@ -51,3 +53,4 @@ export default defineConfig({
     },
     vite: { plugins: [tailwindcss()] },
 });
+
