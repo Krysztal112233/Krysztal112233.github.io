@@ -2,8 +2,9 @@
 title: "EN:The Journey of Rust and Procps"
 date: 2024-08-20 20:43:12
 tags:
-  - 笔记
-  - 文章
+    - 笔记
+    - Rust
+    - Linux
 ---
 
 Hi, I'm Krysztal Huang, a contributor to Debian's `uutils/procps`.

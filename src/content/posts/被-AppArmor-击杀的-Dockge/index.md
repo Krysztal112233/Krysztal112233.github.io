@@ -2,8 +2,9 @@
 title: 被 AppArmor 击杀的 Dockge
 date: 2025-10-12 23:00:30
 tags:
-    - 杂项
-    - 操作系统
+    - 随笔
+    - Linux
+    - 容器
 ---
 
 Debian 自从 Debian10 后开始默认启用了 AppArmor，这是另外一个和 SELinux 类似的 MAC(Mandatory Access Control) 实现，但他有更容易被人类所接受的配置颗粒度，并且由社区开发，而且很容易关掉（不推荐你关掉）

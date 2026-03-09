@@ -2,7 +2,8 @@
 title: 用 curl 下载 OnePlus 的 ROM
 date: 2026-01-13 01:52:29
 tags:
-    - 实用
+    - 笔记
+    - Linux
 ---
 
 刷机，轻而易举啊！

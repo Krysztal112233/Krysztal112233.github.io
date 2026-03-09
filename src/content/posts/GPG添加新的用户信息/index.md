@@ -2,8 +2,8 @@
 title: GPG添加新的用户信息
 date: 2024-05-29 19:03:50
 tags:
-  - 技术
-  - 捣鼓
+    - 教程
+    - GPG
 ---
 
 最近一段时间我决定启用 `krysztal.huang@outlook.com` 这个邮箱地址作为我的工作邮箱，于是我把 GitHub 等都换成了这个，但我的 GPG 就炸了。

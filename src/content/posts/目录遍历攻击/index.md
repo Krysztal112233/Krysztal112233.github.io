@@ -2,7 +2,8 @@
 title: 目录遍历攻击
 date: 2021-10-27 17:07:49
 tags:
-  - 网络安全
+    - 笔记
+    - 安全
 ---
 
 在进行 Reposite 开发的过程之中遇到了访问本地文件的需求，同时又需要暴露文件。在查看 rocket.rs 的文档寻找这部分文档之时知道了 _目录遍历攻击(directory traversal attack)_ 。

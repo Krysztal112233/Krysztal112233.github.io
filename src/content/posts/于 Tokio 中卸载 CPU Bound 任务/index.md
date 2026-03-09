@@ -3,7 +3,9 @@ title: 于 Tokio 中卸载 CPU Bound 任务
 date: 2026-02-22 02:46:24
 tags:
     - 笔记
-    - 文章
+    - Rust
+    - Tokio
+    - 后端
 ---
 
 记一次后端计算密集性能优化。

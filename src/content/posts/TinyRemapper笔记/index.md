@@ -2,10 +2,10 @@
 title: TinyRemapper笔记
 date: 2023-06-23 21:19:20
 tags:
+    - 笔记
+    - Java
     - Minecraft
     - FabricMC
-    - 学习
-    - 笔记
 ---
 
 记录一下探索 TinyRemapper 和 FabricMC 构建流程

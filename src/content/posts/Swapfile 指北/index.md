@@ -2,7 +2,8 @@
 title: Swapfile 指北
 date: 2023-01-29 01:23:30
 tags:
-  - 笔记
+    - 教程
+    - Linux
 ---
 
 swapfile 和 swap 是同种东西，都是**虚拟内存**。不过各有优劣，需要按照自己的需求选择。

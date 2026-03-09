@@ -2,9 +2,9 @@
 title: "文章翻译:从init.vim到init.lua"
 date: 2021-12-20 21:41:36
 tags:
-  - 搬运
-  - 翻译
-  - 文章
+    - 翻译
+    - Vim
+    - Lua
 ---
 
 原文链接：[5 分钟速成课程：从 init.vim 到 init.lua，释放 Neovim 0.5 的威力!](https://www.notonlycode.org/neovim-lua-config/)
@@ -70,9 +70,9 @@ set encoding=utf-8
 
 - `vim.g.mapleader = ","`等价于`let g:mapleader = ','`；`vim.g`是一个代表全局变量的表
 - `vim.o.encoding="utf-8"`等价于`set encoding=utf-8`；其中：
-  - `vim.o`用于全局设置
-  - `vim.wo`用于窗口设置
-  - `vim.bo`用于缓冲设置
+    - `vim.o`用于全局设置
+    - `vim.wo`用于窗口设置
+    - `vim.bo`用于缓冲设置
 - `vim.fn`是一个存放函数的表，你可以使用 `vim.fn.thisIsMyFun` 或 `vim.fn["thisIsMyFun"]` 引用一个函数 `thisIsMyFun`；你可以使用 `vim.fn.thisIsMyFun()` 或 `vim.fn["thisIsMyFun"]()` 调用它
 - `vim.api`是一个 API 函数合集。我只用了一个：`vim.api.nvim_set_keymap`。他能映射我的按键组合到一些方法上（继续看，更多内容在下面）
 

@@ -2,10 +2,9 @@
 title: RVA23 包含了什么
 date: 2025-07-11 22:57:08
 tags:
-  - 笔记
-  - 技术
-  - 编译器
-  - 体系架构
+    - 笔记
+    - 编译器
+    - RISC-V
 ---
 
 [Ubuntu 计划在 25.10](https://bugs.launchpad.net/ubuntu/+source/ubuntu-release-upgrader/+bug/2111715) 的 RISC-V 架构中只支持 RVA23 配置文件，于是打算大概看下 RVA23 有什么是比较重大的指令集成为了必选

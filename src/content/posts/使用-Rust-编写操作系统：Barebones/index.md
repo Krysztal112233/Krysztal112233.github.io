@@ -3,11 +3,9 @@ title: 使用 Rust 编写操作系统：Barebones
 date: 2025-07-03 01:30:20
 tags:
     - 笔记
-    - 技术
+    - Rust
+    - OS教程
     - 操作系统
-categories:
-    - 操作系统
-    - Philipp Oppermann
 ---
 
 这是 Philipp Oppermann

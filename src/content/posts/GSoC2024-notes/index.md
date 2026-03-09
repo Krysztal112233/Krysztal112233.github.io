@@ -3,8 +3,8 @@ title: GSoC2024 笔记：使用 Rust 重新实现 procps
 date: 2024-03-28 23:41:01
 tags:
     - 笔记
-    - 学习
-    - 技术
+    - Rust
+    - 开源
 ---
 
 `procps` 是一套用于收集统计系统信息的套件，也指代一套访问 `/proc` 文件系统的 API。uutils 的 procps 是用 Rust 重新实现的，而这正好是本次 GSoC 的提案内容。

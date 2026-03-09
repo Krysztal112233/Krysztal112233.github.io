@@ -2,7 +2,9 @@
 title: 更加现代的 PaperMC Minecraft 插件设计指南
 date: 2025-05-06 22:52:14
 tags:
-    - 实用
+    - 教程
+    - Java
+    - Minecraft
 ---
 
 你还在为你的大型 PaperMC 插件性能差劲而烦恼吗？来看看这些 tips 吧。

@@ -2,9 +2,10 @@
 title: "Minecraft：原始经济系统设计简述"
 date: 2023-08-26 16:49:36
 tags:
-    - Minecraft
-    - 学习
     - 笔记
+    - Java
+    - Minecraft
+    - 游戏设计
 ---
 
 如何在 Minecraft 设计经济系统是一个服务器维护人员以及策划组持久讨论的问题，那么过了这么多年我能给出什么方案？

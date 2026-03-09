@@ -2,8 +2,9 @@
 title: MicroOS：进阶
 date: 2023-06-12 18:20:19
 tags:
-  - 运维
-  - MicroOS
+    - 笔记
+    - MicroOS
+    - Linux
 ---
 
 知道了 MicroOS 的基本理念，那么就该用这些基本理念构建服务了。

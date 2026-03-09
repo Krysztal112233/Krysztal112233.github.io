@@ -2,8 +2,9 @@
 title: MicroOS：起步
 date: 2023-05-15 18:46:29
 tags:
-  - 运维
-  - MicroOS
+    - 笔记
+    - MicroOS
+    - Linux
 ---
 
 MicroOS 是 SUSE 旗下一款很新的系统，面向原子化与自动化维护。

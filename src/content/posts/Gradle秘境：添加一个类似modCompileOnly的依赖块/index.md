@@ -2,9 +2,10 @@
 title: Gradle秘境：添加一个类似modCompileOnly的依赖块
 date: 2023-09-17 15:55:58
 tags:
-  - 笔记
-  - 学习
-  - 技术
+    - 笔记
+    - Java
+    - Gradle
+    - Minecraft
 ---
 
 FabricLoom 里有类似 `modCompileOnly`、`modApi`、`modImplementation`、`modRuntimeOnly` 配置块，那应该怎么做才能在自己的 Gradle 插件里实现类似的功能？

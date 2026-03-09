@@ -2,8 +2,9 @@
 title: JWT 小册
 date: 2024-02-21 20:52:14
 tags:
-  - 笔记
-  - 技术
+    - 笔记
+    - 后端
+    - JWT
 ---
 
 JWT（JSON Web Token） 是一种分布式、跨域的单点登录方式，他开销很小而且天然支持分布式。
@@ -34,8 +35,8 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4
 
 ```json
 {
-  "alg": "HS256",
-  "typ": "JWT"
+    "alg": "HS256",
+    "typ": "JWT"
 }
 ```
 

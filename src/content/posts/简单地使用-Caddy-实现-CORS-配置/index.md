@@ -2,7 +2,9 @@
 title: 简单地使用 Caddy 实现 CORS 配置
 date: 2025-04-27 23:49:41
 tags:
-  - 运维
+    - 教程
+    - Caddy
+    - DevOps
 ---
 
 其实可以在后端实现 CORS 配置，但是在后端实现 CORS
