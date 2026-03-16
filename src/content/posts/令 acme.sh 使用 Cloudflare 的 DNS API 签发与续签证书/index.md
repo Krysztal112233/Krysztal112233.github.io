@@ -43,12 +43,13 @@ OptionsAlt:
 
 我们采用第一个方法，User token.
 
-去 Cloudflare 的控制面板拿到如下的凭证
+去 Cloudflare 的控制面板拿到如下的凭证，然后再补充一下 `CF_Email`
 
 ```sh
 CF_Token="Y7VRjJ_**"
 CF_Zone_ID="5f011**"
 CF_Account_ID="29b0**"
+CF_Email="***"
 ```
 
 不管是签发还是续签，添加 `--dns_cf` 参数即可
