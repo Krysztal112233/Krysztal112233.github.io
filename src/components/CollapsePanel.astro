@@ -1,0 +1,20 @@
+---
+interface Props {
+    accordion?: boolean;
+}
+
+const { accordion = false } = Astro.props;
+const rootClass = accordion
+    ? "collapse collapse-arrow border-base-300"
+    : "collapse border-base-300";
+---
+
+<div class={rootClass} data-tag-accordion={accordion ? true : undefined}>
+    <input type="checkbox" data-tag-input={accordion ? true : undefined} />
+    <div class="collapse-title pr-14">
+        <slot name="title" />
+    </div>
+    <div class="collapse-content border-base-300 border-t">
+        <slot />
+    </div>
+</div>

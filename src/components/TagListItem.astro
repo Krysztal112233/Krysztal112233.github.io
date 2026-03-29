@@ -1,34 +1,60 @@
 ---
-import { Icon } from "astro-icon/components";
+import CollapsePanel from "./CollapsePanel.astro";
+import TagPostListItem from "./TagPostListItem.astro";
+
+interface PostEntry {
+    id: string;
+    data: {
+        title: string;
+        date: Date;
+        tags: string[];
+    };
+}
 
 interface Props {
     index: number;
     name: string;
-    desc?: string;
+    posts: PostEntry[];
 }
 
-const { name, desc } = Astro.props;
+const { index, name, posts } = Astro.props;
 ---
 
-<li class="list-row items-center">
-    <div></div>
-    <div class="text-xl tabular-nums">
-        {name}
-    </div>
-
-    <div class="divider divider-horizontal max-md:hidden"></div>
-
-    <div class="flex items-center">
-        <div class="text-xs font-semibold uppercase opacity-60">
-            {desc}
-        </div>
-        <a href={`/tags/${name}`}>
-            <button class="btn btn-square btn-ghost">
-                <Icon
-                    name="material-symbols:chevron-right-rounded"
-                    size="32px"
-                />
-            </button>
-        </a>
-    </div>
+<li class="list-none">
+    <CollapsePanel accordion={true}>
+        <Fragment slot="title">
+            <div class="flex items-center gap-4">
+                <div class="text-sm tabular-nums opacity-50">
+                    {String(index + 1).padStart(2, "0")}
+                </div>
+                <div class="min-w-0 flex-1">
+                    <div class="truncate text-xl font-medium tabular-nums">
+                        {name}
+                    </div>
+                    <div
+                        class="text-xs font-semibold tracking-wide uppercase opacity-60"
+                    >
+                        {posts.length} posts
+                    </div>
+                </div>
+            </div>
+        </Fragment>
+        {
+            posts.length > 0 ? (
+                <ul class="flex flex-col gap-2 py-3">
+                    {posts.map((post) => (
+                        <TagPostListItem
+                            title={post.data.title}
+                            date={post.data.date}
+                            href={`/posts/${post.id}/`}
+                        />
+                    ))}
+                </ul>
+            ) : (
+                <p class="py-4 text-sm opacity-70">
+                    This tag has no posts yet.
+                </p>
+            )
+        }
+    </CollapsePanel>
 </li>

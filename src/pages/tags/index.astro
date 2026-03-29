@@ -6,14 +6,63 @@ import I from "../../components/TagListItem.astro";
 
 const allPosts = await getCollection("posts");
 const tags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())];
+const tagEntries = tags.map((tag) => ({
+    name: tag,
+    posts: allPosts
+        .filter((post: any) => post.data.tags.includes(tag))
+        .sort((a, b) => b.data.date.getTime() - a.data.date.getTime()),
+}));
 ---
 
 <MainFrame>
     <Article>
-        <div class="pt-1">
-            <ul class="list">
-                {tags.map((tag, index) => <I name={tag} index={index} />)}
+        <div class="px-4 py-4 md:px-6" data-tag-accordion-root>
+            <ul class="flex flex-col gap-3">
+                {
+                    tagEntries.map((tag, index) => (
+                        <I name={tag.name} posts={tag.posts} index={index} />
+                    ))
+                }
             </ul>
         </div>
     </Article>
+
+    <script is:inline>
+        const initTagAccordion = () => {
+            const root = document.querySelector("[data-tag-accordion-root]");
+            if (!root || root.dataset.bound === "true") return;
+
+            root.dataset.bound = "true";
+
+            const items = Array.from(
+                root.querySelectorAll("[data-tag-accordion]"),
+            );
+            const inputs = items
+                .map((item) => item.querySelector("[data-tag-input]"))
+                .filter(Boolean);
+
+            inputs.forEach((input) => {
+                input.addEventListener("change", () => {
+                    if (!input.checked) return;
+
+                    inputs.forEach((other) => {
+                        if (other !== input) {
+                            other.checked = false;
+                        }
+                    });
+                });
+            });
+
+            document.addEventListener("click", (event) => {
+                if (root.contains(event.target)) return;
+
+                inputs.forEach((input) => {
+                    input.checked = false;
+                });
+            });
+        };
+
+        document.addEventListener("astro:page-load", initTagAccordion);
+        initTagAccordion();
+    </script>
 </MainFrame>
