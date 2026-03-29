@@ -12,13 +12,25 @@ allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
     <Article>
         <div class="pt-1 pb-1">
             {
-                allPosts.map((post: any) => (
-                    <I
-                        title={post.data.title}
-                        date={post.data.date}
-                        href={`/posts/${post.id}/`}
-                        tags={post.data.tags}
-                    />
+                allPosts.map((post: any, index) => (
+                    <>
+                        <I
+                            title={post.data.title}
+                            date={post.data.date}
+                            href={`/posts/${post.id}/`}
+                            tags={post.data.tags}
+                        />
+                        {index < allPosts.length - 1 && (
+                            <div class="px-8 py-1">
+                                <div class="flex items-center gap-3 opacity-20">
+                                    <div
+                                        class="bg-base-300 h-px flex-1"
+                                        style="background-image: radial-gradient(circle, currentColor 1px, transparent 1.2px); background-position: center; background-repeat: repeat-x; background-size: 8px 1px;"
+                                    />
+                                </div>
+                            </div>
+                        )}
+                    </>
                 ))
             }
         </div>
