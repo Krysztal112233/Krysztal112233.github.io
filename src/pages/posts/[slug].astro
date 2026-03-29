@@ -1,7 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
-import Article from "../../components/Article.astro";
-import MainFrame from "../../layout/MainFrame.astro";
+import PostPage from "../../layout/PostPage.astro";
 import TagBadgeList from "../../components/TagBadgeList.astro";
 import { getPostSummary } from "../../utils/postSummary";
 
@@ -14,34 +13,34 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props as any;
-const { Content } = (await render(post)) as any;
+const { Content, headings } = (await render(post)) as any;
 const summary = getPostSummary(post);
 ---
 
-<MainFrame subtitle={post.data.title} description={summary}>
-    <Article>
-        <div class="mx-auto max-w-11/12 p-4 pt-8">
-            <h1 class="mb-4 text-3xl font-bold">{post.data.title}</h1>
-            <div class="text-gray-500">
-                <time
-                    class="italic"
-                    style="font-family: Victor Mono; font-display: swap;"
-                    >{post.data.date.toDateString()}</time
-                >
-                {
-                    post.data.tags && post.data.tags.length > 0 && (
-                        <div class="mt-2">
-                            <TagBadgeList tags={post.data.tags} />
-                        </div>
-                    )
-                }
-            </div>
-
-            <div class="divider m-1"></div>
-
-            <div class="prose prose-lg max-w-none pb-8">
-                <Content />
-            </div>
+<PostPage
+    subtitle={post.data.title}
+    description={summary}
+    headings={headings}
+>
+    <div class="pt-4">
+        <h1 class="mb-4 text-3xl font-bold">{post.data.title}</h1>
+        <div class="text-gray-500">
+            <time
+                class="italic"
+                style="font-family: Victor Mono; font-display: swap;"
+                >{post.data.date.toDateString()}</time
+            >
+            {
+                post.data.tags && post.data.tags.length > 0 && (
+                    <div class="mt-2">
+                        <TagBadgeList tags={post.data.tags} />
+                    </div>
+                )
+            }
         </div>
-    </Article>
-</MainFrame>
+
+        <div class="divider m-1"></div>
+
+        <Content />
+    </div>
+</PostPage>

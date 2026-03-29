@@ -1,12 +1,38 @@
 ---
+import type { HTMLAttributes } from "astro/types";
 import Article from "../components/Article.astro";
+import PostToc from "../components/PostToc.astro";
 import MainFrame from "./MainFrame.astro";
+
+interface Heading {
+    depth: number;
+    slug: string;
+    text: string;
+}
+
+interface Props extends HTMLAttributes<"html"> {
+    description?: string;
+    subtitle?: string;
+    headings?: Heading[];
+}
+
+const { subtitle, description, headings = [] } = Astro.props;
 ---
 
-<MainFrame>
-    <Article>
-        <article class="prose mx-auto max-w-11/12 p-4">
-            <slot />
-        </article>
-    </Article>
+<MainFrame subtitle={subtitle} description={description}>
+    <div class="relative px-4">
+        <div class="pointer-events-none fixed top-28 left-[calc(25%-17rem)] hidden w-60 2xl:block">
+            <div class="pointer-events-auto">
+                <PostToc headings={headings} />
+            </div>
+        </div>
+
+        <Article>
+            <div class="mx-auto max-w-11/12 p-4">
+                <article class="prose prose-lg max-w-none pb-8">
+                    <slot />
+                </article>
+            </div>
+        </Article>
+    </div>
 </MainFrame>

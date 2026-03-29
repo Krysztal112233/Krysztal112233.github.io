@@ -1,0 +1,258 @@
+---
+interface Heading {
+    depth: number;
+    slug: string;
+    text: string;
+}
+
+interface TocGroup {
+    parent: Heading;
+    children: Heading[];
+}
+
+interface Props {
+    headings?: Heading[];
+}
+
+const { headings = [] } = Astro.props;
+
+const tocHeadings = headings.filter(
+    (heading) => heading.depth >= 2 && heading.depth <= 3,
+);
+
+const tocGroups: TocGroup[] = [];
+
+for (const heading of tocHeadings) {
+    if (heading.depth === 2 || tocGroups.length === 0) {
+        tocGroups.push({
+            parent: heading,
+            children: [],
+        });
+        continue;
+    }
+
+    tocGroups[tocGroups.length - 1]!!.children.push(heading);
+}
+---
+
+{
+    tocGroups.length > 0 && (
+        <aside aria-label="Table of contents" data-post-toc>
+            <div class="p-4 backdrop-blur">
+                <div class="mb-3">
+                    <p class="text-base-content/45 text-xs font-semibold tracking-[0.24em] uppercase">
+                        Contents
+                    </p>
+                </div>
+
+                <nav>
+                    <ol class="text-base-content/70 space-y-1.5 text-sm leading-6">
+                        {tocGroups.map((group) => (
+                            <li
+                                class="space-y-1"
+                                data-toc-group
+                                data-toc-parent={group.parent.slug}
+                            >
+                                <a
+                                    href={`#${group.parent.slug}`}
+                                    class="hover:bg-base-200 hover:text-base-content block rounded-lg px-2 py-1 transition-colors"
+                                    data-toc-link
+                                    data-toc-slug={group.parent.slug}
+                                >
+                                    {group.parent.text}
+                                </a>
+
+                                {group.children.length > 0 && (
+                                    <ol
+                                        class="space-y-1 overflow-hidden pl-4 transition-all duration-200"
+                                        data-toc-children
+                                    >
+                                        {group.children.map((heading) => (
+                                            <li>
+                                                <a
+                                                    href={`#${heading.slug}`}
+                                                    class="hover:bg-base-200 hover:text-base-content block rounded-lg px-2 py-1 transition-colors"
+                                                    data-toc-link
+                                                    data-toc-slug={heading.slug}
+                                                >
+                                                    {heading.text}
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </ol>
+                                )}
+                            </li>
+                        ))}
+                    </ol>
+                </nav>
+            </div>
+        </aside>
+    )
+}
+
+<script is:inline>
+    (() => {
+        const ACTIVE_LINK_CLASSES = ["bg-base-200", "text-base-content"];
+        const COLLAPSED_CHILDREN_CLASSES = [
+            "max-h-0",
+            "opacity-0",
+            "pointer-events-none",
+        ];
+        const EXPANDED_CHILDREN_CLASSES = ["max-h-96", "opacity-100"];
+
+        function bindPostToc() {
+            document.querySelectorAll("[data-post-toc]").forEach((root) => {
+                if (
+                    !(root instanceof HTMLElement) ||
+                    root.dataset.bound === "true"
+                ) {
+                    return;
+                }
+
+                root.dataset.bound = "true";
+
+                const links = Array.from(
+                    root.querySelectorAll("[data-toc-link]"),
+                ).filter((link) => link instanceof HTMLAnchorElement);
+                const groups = Array.from(
+                    root.querySelectorAll("[data-toc-group]"),
+                ).filter((group) => group instanceof HTMLElement);
+
+                if (links.length === 0 || groups.length === 0) {
+                    return;
+                }
+
+                const sections = links
+                    .map((link) => {
+                        const slug = link.dataset.tocSlug;
+                        if (!slug) {
+                            return null;
+                        }
+
+                        const heading = document.getElementById(slug);
+                        if (!heading) {
+                            return null;
+                        }
+
+                        return { heading, link };
+                    })
+                    .filter((entry) => entry !== null);
+
+                if (sections.length === 0) {
+                    return;
+                }
+
+                let activeSlug = sections[0].heading.id;
+                let activeParentSlug =
+                    sections.find(({ heading }) => heading.tagName === "H2")
+                        ?.heading.id ?? activeSlug;
+
+                function findParentSlug(section) {
+                    if (section.heading.tagName === "H2") {
+                        return section.heading.id;
+                    }
+
+                    const sectionIndex = sections.indexOf(section);
+                    for (let index = sectionIndex - 1; index >= 0; index -= 1) {
+                        if (sections[index].heading.tagName === "H2") {
+                            return sections[index].heading.id;
+                        }
+                    }
+
+                    return activeParentSlug;
+                }
+
+                function paintActiveLink() {
+                    links.forEach((link) => {
+                        const isActive = link.dataset.tocSlug === activeSlug;
+                        ACTIVE_LINK_CLASSES.forEach((className) => {
+                            link.classList.toggle(className, isActive);
+                        });
+                    });
+                }
+
+                function paintGroupVisibility() {
+                    groups.forEach((group) => {
+                        const isActiveGroup =
+                            group.dataset.tocParent === activeParentSlug;
+                        const children = group.querySelector(
+                            "[data-toc-children]",
+                        );
+
+                        if (!(children instanceof HTMLElement)) {
+                            return;
+                        }
+
+                        COLLAPSED_CHILDREN_CLASSES.forEach((className) => {
+                            children.classList.toggle(
+                                className,
+                                !isActiveGroup,
+                            );
+                        });
+                        EXPANDED_CHILDREN_CLASSES.forEach((className) => {
+                            children.classList.toggle(className, isActiveGroup);
+                        });
+                    });
+                }
+
+                function syncActiveState(nextSlug) {
+                    activeSlug = nextSlug;
+
+                    const activeSection = sections.find(
+                        ({ heading }) => heading.id === activeSlug,
+                    );
+
+                    if (activeSection) {
+                        activeParentSlug = findParentSlug(activeSection);
+                    }
+
+                    paintActiveLink();
+                    paintGroupVisibility();
+                }
+
+                syncActiveState(activeSlug);
+
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        const visibleEntries = entries
+                            .filter((entry) => entry.isIntersecting)
+                            .sort(
+                                (left, right) =>
+                                    left.boundingClientRect.top -
+                                    right.boundingClientRect.top,
+                            );
+
+                        if (visibleEntries.length > 0) {
+                            syncActiveState(visibleEntries[0].target.id);
+                            return;
+                        }
+
+                        const passedSections = sections.filter(
+                            ({ heading }) =>
+                                heading.getBoundingClientRect().top <= 128,
+                        );
+
+                        if (passedSections.length > 0) {
+                            syncActiveState(
+                                passedSections[passedSections.length - 1]
+                                    .heading.id,
+                            );
+                        }
+                    },
+                    {
+                        rootMargin: "-96px 0px -60% 0px",
+                        threshold: [0, 1],
+                    },
+                );
+
+                sections.forEach(({ heading }) => observer.observe(heading));
+            });
+        }
+
+        bindPostToc();
+        document.addEventListener("DOMContentLoaded", bindPostToc, {
+            once: true,
+        });
+        document.addEventListener("astro:after-swap", bindPostToc);
+    })();
+</script>
