@@ -2,9 +2,9 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<label class="btn btn-ghost">
-    <label class="swap swap-rotate">
-        <input type="checkbox" value="dark" class="theme-controller" />
+<li>
+    <label class="btn btn-ghost swap swap-rotate" aria-label="切换主题">
+        <input class="theme-toggle" type="checkbox" />
         <div class="swap-off text-2xl">
             <Icon name="material-symbols:sunny-outline" />
         </div>
@@ -12,4 +12,4 @@ import { Icon } from "astro-icon/components";
             <Icon name="material-symbols:moon-stars-outline" />
         </div>
     </label>
-</label>
+</li>

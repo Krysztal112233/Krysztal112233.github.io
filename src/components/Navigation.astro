@@ -4,6 +4,7 @@ import { getConfig } from "../config.ts";
 import N from "./NavigationItem.astro";
 import I from "./IconButton.astro";
 import NF from "./NavigationFolder.astro";
+import ThemeSwitcher from "./ThemeSwitcher.astro";
 
 interface Props {
     title: string;
@@ -37,5 +38,6 @@ const { title }: Props = Astro.props;
                 }
             })
         }
+        <ThemeSwitcher />
     </NF>
 </div>

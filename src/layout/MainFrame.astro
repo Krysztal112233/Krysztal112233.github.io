@@ -20,6 +20,62 @@ const pageTitle = subtitle ? `${subtitle} | ${title}` : title;
 ---
 
 <html lang="zh-CN" class="hidden-scrollbar" data-theme="retro">
+    <script is:inline>
+        (() => {
+            const THEME_STORAGE_KEY = "theme";
+            const LIGHT_THEME = "retro";
+            const DARK_THEME = "dark";
+
+            function getPreferredTheme() {
+                const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+                if (storedTheme === LIGHT_THEME || storedTheme === DARK_THEME) {
+                    return storedTheme;
+                }
+
+                return window.matchMedia("(prefers-color-scheme: dark)").matches
+                    ? DARK_THEME
+                    : LIGHT_THEME;
+            }
+
+            function applyTheme(theme) {
+                document.documentElement.setAttribute("data-theme", theme);
+
+                document.querySelectorAll(".theme-toggle").forEach((toggle) => {
+                    if (toggle instanceof HTMLInputElement) {
+                        toggle.checked = theme === DARK_THEME;
+                    }
+                });
+            }
+
+            function bindThemeToggles() {
+                applyTheme(getPreferredTheme());
+
+                document.querySelectorAll(".theme-toggle").forEach((toggle) => {
+                    if (
+                        !(toggle instanceof HTMLInputElement) ||
+                        toggle.dataset.bound === "true"
+                    ) {
+                        return;
+                    }
+
+                    toggle.dataset.bound = "true";
+                    toggle.addEventListener("change", () => {
+                        const nextTheme = toggle.checked
+                            ? DARK_THEME
+                            : LIGHT_THEME;
+                        localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+                        applyTheme(nextTheme);
+                    });
+                });
+            }
+
+            applyTheme(getPreferredTheme());
+            document.addEventListener("DOMContentLoaded", bindThemeToggles, {
+                once: true,
+            });
+            document.addEventListener("astro:after-swap", bindThemeToggles);
+        })();
+    </script>
     <link href="https://fonts.cdnfonts.com/css/victor-mono" rel="stylesheet" />
 
     <meta charset="utf-8" />
