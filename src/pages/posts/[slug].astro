@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import Article from "../../components/Article.astro";
 import MainFrame from "../../layout/MainFrame.astro";
 import TagBadgeList from "../../components/TagBadgeList.astro";
@@ -7,13 +7,13 @@ import TagBadgeList from "../../components/TagBadgeList.astro";
 export async function getStaticPaths() {
     const posts = await getCollection("posts");
     return posts.map((post) => ({
-        params: { slug: post.slug },
+        params: { slug: post.id },
         props: { post },
     }));
 }
 
 const { post } = Astro.props as any;
-const { Content } = (await post.render()) as any;
+const { Content } = (await render(post)) as any;
 ---
 
 <MainFrame subtitle={post.data.title}>

@@ -16,7 +16,7 @@ allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
                     <I
                         title={post.data.title}
                         date={post.data.date}
-                        href={`/posts/${post.slug}/`}
+                        href={`/posts/${post.id}/`}
                         tags={post.data.tags}
                     />
                 ))

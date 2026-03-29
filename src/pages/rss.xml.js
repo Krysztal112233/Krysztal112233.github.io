@@ -16,7 +16,7 @@ export async function GET(context) {
         items: posts.map((post) => ({
             title: post.data.title,
             pubDate: post.data.date,
-            link: `${site}/${post.collection}/${post.slug}`,
+            link: `${site}/${post.collection}/${post.id}`,
         })),
     });
 }
