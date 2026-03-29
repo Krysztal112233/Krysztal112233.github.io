@@ -2,24 +2,29 @@
 import { getConfig, type Config, type LinkConfig } from "../config";
 import MainFrame from "../layout/MainFrame.astro";
 import LinkCard from "../components/LinkCard.astro";
-import Article from "../components/Article.astro";
 
 const { links }: Config = await getConfig();
 ---
 
 <MainFrame>
-    <Article>
-        <div class="flex shrink-0 flex-row flex-wrap items-center">
-            {
-                links.map(({ title, image, intro, link }: LinkConfig) => (
-                    <LinkCard
-                        title={title}
-                        image={image}
-                        intro={intro}
-                        link={link}
-                    />
-                ))
-            }
+    <div class="flex min-h-[80vh] items-center justify-center">
+        <div
+            class="w-full rounded-xl shadow-xl duration-300 hover:shadow-2xl md:w-10/12 2xl:w-1/2"
+        >
+            <div
+                class="flex shrink-0 flex-row flex-wrap items-center pt-1 pb-1"
+            >
+                {
+                    links.map(({ title, image, intro, link }: LinkConfig) => (
+                        <LinkCard
+                            title={title}
+                            image={image}
+                            intro={intro}
+                            link={link}
+                        />
+                    ))
+                }
+            </div>
         </div>
-    </Article>
+    </div>
 </MainFrame>
