@@ -1,20 +1,12 @@
 ---
+import type { CollectionEntry } from "astro:content";
 import CollapsePanel from "./CollapsePanel.astro";
 import TagPostListItem from "./TagPostListItem.astro";
-
-interface PostEntry {
-    id: string;
-    data: {
-        title: string;
-        date: Date;
-        tags: string[];
-    };
-}
 
 interface Props {
     index: number;
     name: string;
-    posts: PostEntry[];
+    posts: CollectionEntry<"posts">[];
 }
 
 const { index, name, posts } = Astro.props;

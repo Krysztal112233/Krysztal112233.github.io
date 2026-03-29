@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import PostSummaryPreview from "./PostSummaryPreview.astro";
 import TagBadge from "./TagBadge.astro";
 
 interface Props {
@@ -18,7 +19,7 @@ const { title, href, desc, date, tags } = Astro.props;
         <h2 class="card-title text-2xl font-normal">
             <a href={href}>{title}</a>
         </h2>
-        {desc && <p>{desc}</p>}
+        {desc && <PostSummaryPreview text={desc} />}
         <div
             class="card-actions flex flex-col items-start justify-start gap-4 md:flex-row md:items-center"
         >

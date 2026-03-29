@@ -1,18 +1,11 @@
 ---
 import Article from "./Article.astro";
 import PostIndexItem from "./PostIndexItem.astro";
-
-interface PostEntry {
-    id: string;
-    data: {
-        title: string;
-        date: Date | string;
-        tags: string[];
-    };
-}
+import type { CollectionEntry } from "astro:content";
+import { getPostSummary } from "../utils/postSummary";
 
 interface Props {
-    posts: PostEntry[];
+    posts: CollectionEntry<"posts">[];
 }
 
 const { posts }: Props = Astro.props;
@@ -25,9 +18,10 @@ const { posts }: Props = Astro.props;
                 <>
                     <PostIndexItem
                         title={post.data.title}
+                        desc={getPostSummary(post)}
                         date={post.data.date.toString()}
                         href={`/posts/${post.id}/`}
-                        tags={post.data.tags}
+                        tags={post.data.tags as string[]}
                     />
                     {index < posts.length - 1 && (
                         <div class="px-8 py-1">

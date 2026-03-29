@@ -1,6 +1,7 @@
 import rss from "@astrojs/rss";
 import { getConfig } from "../config";
 import { getCollection } from "astro:content";
+import { getPostSummary } from "../utils/postSummary";
 
 export async function GET(context) {
     const {
@@ -17,6 +18,7 @@ export async function GET(context) {
             title: post.data.title,
             pubDate: post.data.date,
             link: `${site}/${post.collection}/${post.id}`,
+            description: getPostSummary(post),
         })),
     });
 }

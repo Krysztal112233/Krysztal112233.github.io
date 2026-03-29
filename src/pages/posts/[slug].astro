@@ -3,6 +3,7 @@ import { getCollection, render } from "astro:content";
 import Article from "../../components/Article.astro";
 import MainFrame from "../../layout/MainFrame.astro";
 import TagBadgeList from "../../components/TagBadgeList.astro";
+import { getPostSummary } from "../../utils/postSummary";
 
 export async function getStaticPaths() {
     const posts = await getCollection("posts");
@@ -14,9 +15,10 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props as any;
 const { Content } = (await render(post)) as any;
+const summary = getPostSummary(post);
 ---
 
-<MainFrame subtitle={post.data.title}>
+<MainFrame subtitle={post.data.title} description={summary}>
     <Article>
         <div class="mx-auto max-w-11/12 p-4 pt-8">
             <h1 class="mb-4 text-3xl font-bold">{post.data.title}</h1>

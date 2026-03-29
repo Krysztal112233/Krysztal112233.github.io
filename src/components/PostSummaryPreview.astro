@@ -1,0 +1,16 @@
+---
+interface Props {
+    text: string;
+}
+
+const { text }: Props = Astro.props;
+---
+
+<div class="bg-base-200/30 mt-2 flex items-stretch gap-3 rounded-sm px-3 py-2">
+    <div class="bg-base-content/20 w-px shrink-0 self-stretch" />
+    <div class="min-w-0">
+        <p class="line-clamp-3 text-sm leading-6 opacity-75">
+            {text}
+        </p>
+    </div>
+</div>

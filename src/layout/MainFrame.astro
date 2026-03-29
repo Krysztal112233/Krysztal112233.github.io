@@ -7,16 +7,18 @@ import { getConfig, type Config } from "../config";
 import { ClientRouter } from "astro:transitions";
 
 interface Props {
+    description?: string;
     subtitle?: string;
 }
 
 const {
-    site: { description, title, author },
+    site: { description: siteDescription, title, author },
 }: Config = await getConfig();
 
-const { subtitle } = Astro.props;
+const { subtitle, description } = Astro.props;
 
 const pageTitle = subtitle ? `${subtitle} | ${title}` : title;
+const pageDescription = description ?? siteDescription;
 ---
 
 <html lang="zh-CN" class="hidden-scrollbar" data-theme="retro">
@@ -82,7 +84,7 @@ const pageTitle = subtitle ? `${subtitle} | ${title}` : title;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{pageTitle}</title>
     <meta name="title" content={pageTitle} />
-    {description && <meta name="description" content={description} />}
+    {pageDescription && <meta name="description" content={pageDescription} />}
     {author && <meta name="author" content={author} />}
 
     <ClientRouter />
