@@ -1,0 +1,16 @@
+---
+import type { CollectionEntry } from "astro:content";
+import PostListSection from "./PostListSection.astro";
+import PostPagination from "./PostPagination.astro";
+
+interface Props {
+    posts: CollectionEntry<"posts">[];
+    currentPage: number;
+    totalPages: number;
+}
+
+const { posts, currentPage, totalPages }: Props = Astro.props;
+---
+
+<PostListSection posts={posts} />
+<PostPagination currentPage={currentPage} totalPages={totalPages} />

@@ -1,0 +1,67 @@
+---
+interface Props {
+    currentPage: number;
+    totalPages: number;
+}
+
+const { currentPage, totalPages }: Props = Astro.props;
+
+const previousHref =
+    currentPage > 2 ? `/page/${currentPage - 1}/` : currentPage === 2 ? "/" : "";
+const nextHref = currentPage < totalPages ? `/page/${currentPage + 1}/` : "";
+
+const pageLinks = Array.from({ length: totalPages }, (_, index) => {
+    const page = index + 1;
+    return {
+        page,
+        href: page === 1 ? "/" : `/page/${page}/`,
+        isCurrent: page === currentPage,
+    };
+});
+---
+
+{
+    totalPages > 1 && (
+        <nav
+            class="mt-8 flex flex-wrap items-center justify-center gap-2 px-8 pb-8"
+            aria-label="Post pagination"
+        >
+            <a
+                class:list={[
+                    "btn btn-sm",
+                    !previousHref && "btn-disabled pointer-events-none opacity-40",
+                ]}
+                href={previousHref || undefined}
+                aria-disabled={!previousHref}
+            >
+                Prev
+            </a>
+
+            <div class="join">
+                {pageLinks.map(({ page, href, isCurrent }) => (
+                    <a
+                        class:list={[
+                            "btn btn-sm join-item min-w-10",
+                            isCurrent ? "btn-active" : "btn-ghost",
+                        ]}
+                        href={href}
+                        aria-current={isCurrent ? "page" : undefined}
+                    >
+                        {page}
+                    </a>
+                ))}
+            </div>
+
+            <a
+                class:list={[
+                    "btn btn-sm",
+                    !nextHref && "btn-disabled pointer-events-none opacity-40",
+                ]}
+                href={nextHref || undefined}
+                aria-disabled={!nextHref}
+            >
+                Next
+            </a>
+        </nav>
+    )
+}
