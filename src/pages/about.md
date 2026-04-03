@@ -68,5 +68,5 @@ layout: ../layout/AboutPage.astro
 ### GPG PubKey
 
 ```bash
-gpg --receive-key 0x3f4257a18b0f5158125604a9d9694749fa4d22ed
+gpg --keyserver keyserver.ubuntu.com --receive-key 0x1CAA2996020C6774
 ```
