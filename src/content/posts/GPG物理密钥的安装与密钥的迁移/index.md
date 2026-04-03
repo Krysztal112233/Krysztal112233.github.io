@@ -1,5 +1,5 @@
 ---
-title: GPG物理密钥的安装与密钥的迁移
+title: GPG 物理密钥的安装与密钥的迁移
 date: 2022-06-22 11:20:05
 tags:
     - 教程
@@ -219,11 +219,21 @@ gpg --armor --output stubs.asc --export-secret-keys <Your Key ID>
 
 现在的 KeyServer 会互相同步 Key，因此只需要简单的使用如下命令便可做到全世界的 KeyServer 都有你的 PubKey。
 
+通过以下命令查看主密钥的 KeyID：
+
 ```bash
-gpg --send-key [Your Key ID]
+gpg --list-keys --keyid-format 0xlong
 ```
 
-目前的 GPG KeyServer 默认为 `keyserver.ubuntu.com` ，是国内可以访问的，请放心食用捏。
+然后记住主密钥的 KeyID，接下来要用到：
+
+```bash
+gpg --keyserver keyserver.ubuntu.com --send-key [Your Key ID]
+```
+
+~目前的 GPG KeyServer 默认为 `keyserver.ubuntu.com` ，是国内可以访问的，请放心食用捏。~
+
+发现不知道什么时候不是了，因此还是添加了 `--keyserver` 参数
 
 上文提到的`pubkey.asc`为什么要和你的`stub.asc`放一起？因为一旦到了新设备，很可能新设备没联网，GPG 无法校验是否正确。
 
@@ -232,7 +242,7 @@ gpg --send-key [Your Key ID]
 如果能联网哪？如果能联网，能与 KeyServer 通讯，并且已经上传了公钥，那么只需要做下面这一步
 
 ```bash
-gpg --receive-key [Your Key ID]
+gpg gpg --keyserver keyserver.ubuntu.com --receive-key [Your Key ID]
 ```
 
 大功告成 uwu
