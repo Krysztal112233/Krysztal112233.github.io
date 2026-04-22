@@ -54,10 +54,14 @@ layout: ../layout/AboutPage.astro
 
 ## 联系方式
 
-### 邮件
+### 社交平台
 
-- QQ：2116472431
-- Outlook：krysztal.huang@outlook.com
+- QQ：`2116472431`
+- 邮箱：`krysztal.huang@outlook.com`
+
+> [!NOTE]
+> 在添加我的 QQ
+> 或者其他方式之前，最好通过邮件先联系我说明来意，个人比较疲于社交，望谅解。
 
 ### 游戏平台
 
