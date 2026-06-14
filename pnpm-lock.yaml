@@ -48,8 +48,8 @@ importers:
         specifier: ^1.1.5
         version: 1.1.5
       daisyui:
-        specifier: ^5.5.19
-        version: 5.5.19
+        specifier: ^5.5.23
+        version: 5.5.23
       expressive-code-language-badge:
         specifier: ^1.1.0
         version: 1.1.0(@expressive-code/core@0.41.7)
@@ -1228,8 +1228,8 @@ packages:
     resolution: {integrity: sha512-0LrrStPOdJj+SPCCrGhzryycLjwcgUSHBtxNA8aIDxf0GLsRh1cKYhB00Gd1lDOS4yGH69+SNn13+TWbVHETFQ==}
     engines: {node: ^10 || ^12.20.0 || ^14.13.0 || >=15.0.0, npm: '>=7.0.0'}
 
-  daisyui@5.5.19:
-    resolution: {integrity: sha512-pbFAkl1VCEh/MPCeclKL61I/MqRIFFhNU7yiXoDDRapXN4/qNCoMxeCCswyxEEhqL5eiTTfwHvucFtOE71C9sA==}
+  daisyui@5.5.23:
+    resolution: {integrity: sha512-xuheNUSL4T6ZVtWXoioqcNkjoyGX85QTDz4HTw2aBPfqk4fuMjax5HDo8qCmpV6M1YN8bGvfx5BpYCoDeRlt+A==}
 
   date-fns@4.1.0:
     resolution: {integrity: sha512-Ukq0owbQXxa/U3EGtsdVBkR1w7KOQ5gIBqdH2hkvknzZPYvBxb/aa6E8L7tmjFtkwZBu3UXBbjIgPo/Ez4xaNg==}
@@ -3849,7 +3849,7 @@ snapshots:
     dependencies:
       css-tree: 2.2.1
 
-  daisyui@5.5.19: {}
+  daisyui@5.5.23: {}
 
   date-fns@4.1.0: {}
 
