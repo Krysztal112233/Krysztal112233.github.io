@@ -1,3 +1,6 @@
+allowBuilds:
+  esbuild: true
+  sharp: true
 autoInstallPeers: false
 onlyBuiltDependencies:
   - esbuild
