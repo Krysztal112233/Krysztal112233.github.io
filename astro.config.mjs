@@ -33,7 +33,12 @@ export default defineConfig({
                 pluginLanguageBadge(),
                 pluginLineNumbers(),
             ],
-            themes: ["everforest-light"],
+            themes: ["everforest-light", "everforest-dark"],
+            useDarkModeMediaQuery: false,
+            themeCssSelector: (theme) =>
+                theme.type === "dark"
+                    ? '[data-theme="dark"]'
+                    : '[data-theme="retro"]',
         }),
         icon(),
         sitemap(),
