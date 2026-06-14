@@ -21,7 +21,9 @@ const { subtitle, description, headings = [] } = Astro.props;
 
 <MainFrame subtitle={subtitle} description={description}>
     <div class="relative px-4">
-        <div class="pointer-events-none fixed top-28 left-[calc(25%-17rem)] hidden w-60 2xl:block">
+        <div
+            class="pointer-events-none fixed top-28 left-[calc(25%-17rem)] hidden w-60 2xl:block"
+        >
             <div class="pointer-events-auto">
                 <PostToc headings={headings} />
             </div>

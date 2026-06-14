@@ -17,11 +17,7 @@ const { Content, headings } = (await render(post)) as any;
 const summary = getPostSummary(post);
 ---
 
-<PostPage
-    subtitle={post.data.title}
-    description={summary}
-    headings={headings}
->
+<PostPage subtitle={post.data.title} description={summary} headings={headings}>
     <div class="pt-4">
         <h1 class="mb-4 text-3xl font-bold">{post.data.title}</h1>
         <div class="text-gray-500">

@@ -25,9 +25,8 @@ function truncateText(text: string, maxLength: number): string {
 
     const truncated = text.slice(0, maxLength).trimEnd();
     const lastSpace = truncated.lastIndexOf(" ");
-    const safeText = lastSpace > maxLength * 0.6
-        ? truncated.slice(0, lastSpace)
-        : truncated;
+    const safeText =
+        lastSpace > maxLength * 0.6 ? truncated.slice(0, lastSpace) : truncated;
 
     return `${safeText}...`;
 }
@@ -48,7 +47,9 @@ function toPlainText(markdown: string): string {
         .trim();
 }
 
-export function getPostSummary(post: CollectionEntry<"posts">): string | undefined {
+export function getPostSummary(
+    post: CollectionEntry<"posts">,
+): string | undefined {
     const body = post.body?.trim();
 
     if (!body) {
@@ -56,9 +57,7 @@ export function getPostSummary(post: CollectionEntry<"posts">): string | undefin
     }
 
     const moreMatch = body.match(MORE_MARKER_REGEX);
-    const summarySource = moreMatch
-        ? body.slice(0, moreMatch.index)
-        : body;
+    const summarySource = moreMatch ? body.slice(0, moreMatch.index) : body;
     const plainText = toPlainText(summarySource);
 
     if (!plainText) {

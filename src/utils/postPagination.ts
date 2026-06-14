@@ -9,7 +9,7 @@ export function sortPosts(posts: CollectionEntry<"posts">[]) {
 export function getPaginatedPosts(
     posts: CollectionEntry<"posts">[],
     currentPage: number,
-    postsPerPage = POSTS_PER_PAGE
+    postsPerPage = POSTS_PER_PAGE,
 ) {
     const totalPages = Math.max(1, Math.ceil(posts.length / postsPerPage));
     const safePage = Math.min(Math.max(currentPage, 1), totalPages);

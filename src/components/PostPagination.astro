@@ -7,7 +7,11 @@ interface Props {
 const { currentPage, totalPages }: Props = Astro.props;
 
 const previousHref =
-    currentPage > 2 ? `/page/${currentPage - 1}/` : currentPage === 2 ? "/" : "";
+    currentPage > 2
+        ? `/page/${currentPage - 1}/`
+        : currentPage === 2
+          ? "/"
+          : "";
 const nextHref = currentPage < totalPages ? `/page/${currentPage + 1}/` : "";
 
 const pageLinks = Array.from({ length: totalPages }, (_, index) => {
@@ -29,7 +33,8 @@ const pageLinks = Array.from({ length: totalPages }, (_, index) => {
             <a
                 class:list={[
                     "btn btn-sm",
-                    !previousHref && "btn-disabled pointer-events-none opacity-40",
+                    !previousHref &&
+                        "btn-disabled pointer-events-none opacity-40",
                 ]}
                 href={previousHref || undefined}
                 aria-disabled={!previousHref}
