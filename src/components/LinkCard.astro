@@ -12,15 +12,15 @@ const { title, image, intro, link } = Astro.props;
             <div
                 class="bg-base-100 flex items-center gap-4 rounded-lg p-4 duration-300 hover:shadow-lg"
             >
-                <div class="avatar">
+                <div class="avatar shrink-0">
                     <div class="h-12 w-12 rounded-full">
                         <img src={image} />
                     </div>
                 </div>
 
-                <div>
-                    <h2 class="font-bold">{title}</h2>
-                    <p>{intro}</p>
+                <div class="min-w-0">
+                    <h2 class="break-words font-bold">{title}</h2>
+                    <p class="break-words">{intro}</p>
                 </div>
             </div>
         </a>
