@@ -47,17 +47,19 @@ function toPlainText(markdown: string): string {
         .trim();
 }
 
-export function getPostSummary(
-    post: CollectionEntry<"posts">,
+export function getSummaryFromBody(
+    body: string | undefined,
 ): string | undefined {
-    const body = post.body?.trim();
+    const trimmedBody = body?.trim();
 
-    if (!body) {
+    if (!trimmedBody) {
         return undefined;
     }
 
-    const moreMatch = body.match(MORE_MARKER_REGEX);
-    const summarySource = moreMatch ? body.slice(0, moreMatch.index) : body;
+    const moreMatch = trimmedBody.match(MORE_MARKER_REGEX);
+    const summarySource = moreMatch
+        ? trimmedBody.slice(0, moreMatch.index)
+        : trimmedBody;
     const plainText = toPlainText(summarySource);
 
     if (!plainText) {
@@ -68,4 +70,10 @@ export function getPostSummary(
         plainText,
         moreMatch ? EXPLICIT_SUMMARY_LENGTH : AUTO_EXCERPT_LENGTH,
     );
+}
+
+export function getPostSummary(
+    post: CollectionEntry<"posts">,
+): string | undefined {
+    return getSummaryFromBody(post.body);
 }

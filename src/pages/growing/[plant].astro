@@ -1,0 +1,111 @@
+---
+import { getCollection, render } from "astro:content";
+import CollapsePanel from "../../components/CollapsePanel.astro";
+import PostPage from "../../layout/PostPage.astro";
+import { groupPlants } from "../../utils/growingLog";
+
+interface Heading {
+    depth: number;
+    slug: string;
+    text: string;
+}
+
+export async function getStaticPaths() {
+    const entries = await getCollection("growing");
+    return groupPlants(entries).map((plant) => ({
+        params: { plant: plant.slug },
+        props: { plant },
+    }));
+}
+
+const { plant } = Astro.props;
+
+const aboutRendered = plant.about ? await render(plant.about) : undefined;
+const aboutDetailRendered = plant.aboutDetail
+    ? await render(plant.aboutDetail)
+    : undefined;
+const logsRendered = await Promise.all(
+    plant.logs.map(async (log) => ({ log, ...(await render(log.entry)) })),
+);
+
+const headings: Heading[] = [
+    ...((aboutRendered?.headings ?? []) as Heading[]),
+    ...logsRendered.flatMap(({ log, headings: logHeadings }) => [
+        { depth: 2, slug: log.dateSlug, text: log.dateSlug },
+        ...(logHeadings as Heading[]),
+    ]),
+];
+---
+
+<PostPage subtitle={plant.title} headings={headings}>
+    <div class="pt-4">
+        <h1 class="mb-4 text-3xl font-bold">{plant.title}</h1>
+        <div class="text-gray-500">
+            {
+                plant.startDate && (
+                    <time
+                        class="italic"
+                        style="font-family: Victor Mono; font-display: swap;"
+                    >
+                        {plant.startDate.toDateString()}
+                    </time>
+                )
+            }
+        </div>
+
+        {
+            aboutRendered && (
+                <>
+                    <div class="divider m-1" />
+                    <aboutRendered.Content />
+                    {aboutDetailRendered && (
+                        <CollapsePanel
+                            accordion={true}
+                            class="bg-base-200 rounded-box mt-2"
+                        >
+                            <Fragment slot="title">
+                                <span class="text-base font-medium">
+                                    更多信息
+                                </span>
+                            </Fragment>
+                            <div class="pt-2">
+                                <aboutDetailRendered.Content />
+                            </div>
+                        </CollapsePanel>
+                    )}
+                </>
+            )
+        }
+
+        {
+            logsRendered.length > 0 && (
+                <div
+                    class="relative -mx-[calc(100%/22+1rem)] my-6 opacity-30"
+                    aria-hidden="true"
+                >
+                    <div
+                        class="h-px"
+                        style="background-image: linear-gradient(to right, currentColor 8px, transparent 4px); background-position: center; background-repeat: repeat-x; background-size: 12px 1px;"
+                    />
+                </div>
+            )
+        }
+
+        {
+            logsRendered.map(({ log, Content }, index) => (
+                <>
+                    {index > 0 && <div class="divider m-1" />}
+                    <h2 id={log.dateSlug} class="flex items-center gap-2">
+                        <span>{log.dateSlug}</span>
+                        {log.entry.data.weather && (
+                            <span class="text-base-content/60 text-xl font-normal">
+                                · {log.entry.data.weather}
+                            </span>
+                        )}
+                    </h2>
+                    <Content />
+                </>
+            ))
+        }
+    </div>
+</PostPage>

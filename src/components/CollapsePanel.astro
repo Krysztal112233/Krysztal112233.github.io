@@ -1,12 +1,11 @@
 ---
 interface Props {
     accordion?: boolean;
+    class?: string;
 }
 
-const { accordion = false } = Astro.props;
-const rootClass = accordion
-    ? "collapse collapse-arrow border-base-300"
-    : "collapse border-base-300";
+const { accordion = false, class: className = "" } = Astro.props;
+const rootClass = `${accordion ? "collapse collapse-arrow border-base-300" : "collapse border-base-300"} ${className}`;
 ---
 
 <div class={rootClass} data-tag-accordion={accordion ? true : undefined}>

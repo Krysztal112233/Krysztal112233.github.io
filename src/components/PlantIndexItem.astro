@@ -1,0 +1,45 @@
+---
+import { Icon } from "astro-icon/components";
+import type { Plant } from "../utils/growingLog";
+
+interface Props {
+    plant: Plant;
+}
+
+const { plant } = Astro.props;
+---
+
+<div class="card m-8">
+    <div class="card-body p-4">
+        <h2 class="card-title text-2xl font-normal">
+            <a href={`/growing/${plant.slug}/`}>{plant.title}</a>
+        </h2>
+        <div
+            class="card-actions flex flex-col items-start justify-start gap-4 md:flex-row md:items-center"
+        >
+            {
+                plant.startDate && (
+                    <div class="flex items-center gap-1">
+                        <Icon name="material-symbols:eco-outline" size="16px" />
+                        <time>始于 {plant.startDate.toDateString()}</time>
+                    </div>
+                )
+            }
+            {
+                plant.lastLogDate && (
+                    <div class="flex items-center gap-1">
+                        <Icon
+                            name="material-symbols:date-range-outline"
+                            size="16px"
+                        />
+                        <time>最新 {plant.lastLogDate.toDateString()}</time>
+                    </div>
+                )
+            }
+            <div class="flex items-center gap-1">
+                <Icon name="material-symbols:edit-note-outline" size="16px" />
+                <span>{plant.logs.length} 篇日志</span>
+            </div>
+        </div>
+    </div>
+</div>

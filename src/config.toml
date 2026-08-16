@@ -31,6 +31,11 @@ label = "工具"
 href = "/tool"
 
 [[navi]]
+icon = "material-symbols:potted-plant-outline"
+label = "种植日志"
+href = "/growing/"
+
+[[navi]]
 icon = "material-symbols:rss-feed-rounded"
 href = "/rss.xml"
 
