@@ -17,7 +17,7 @@ tags:
 
 发现没办法通过浏览器直接下载 OnePlus 的 OTA ROM，于是在 XDA 上翻资源找到了这个邪门的方法
 
-- https://xdaforums.com/t/download-oxygenos-rollback-package.4712819/
+- <https://xdaforums.com/t/download-oxygenos-rollback-package.4712819/>
   格式大概是 `curl -C - -LO --resolve oxygenos.oneplus.net:443:23.48.224.239 <url>`
 
 以下是举例

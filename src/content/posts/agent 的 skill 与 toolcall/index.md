@@ -25,9 +25,9 @@ tags:
 
 - 触发场景：用户说“帮我 review 这段 SQL”
 - skill 内容：
-    - 先检查语义正确性
-    - 再检查索引命中与全表扫描风险
-    - 最后给出优化版 SQL 和风险说明
+  - 先检查语义正确性
+  - 再检查索引命中与全表扫描风险
+  - 最后给出优化版 SQL 和风险说明
 
 这个 `skill` 不直接执行数据库命令，它主要提供步骤和标准。
 
@@ -70,11 +70,11 @@ description: Review SQL for correctness and performance risks.
 可能的 `toolcall` 流程：
 
 - 读取文件内容
-    - 比如执行 `cat` 命令
+  - 比如执行 `cat` 命令
 - 执行替换
-    - 比如执行 `sed` 命令
+  - 比如执行 `sed` 命令
 - 再读一遍确认替换结果
-    - 然后再执行 `cat` 命令
+  - 然后再执行 `cat` 命令
 
 这里每一步都是具体调用工具，不是抽象流程说明。
 
@@ -83,23 +83,23 @@ description: Review SQL for correctness and performance risks.
 按我的理解：`skill` 是策略模板；`toolcall` 是具体执行的工具
 
 - 抽象层级：
-    - `skill` 高层、可复用
-    - `toolcall` 低层、面向当前任务
+  - `skill` 高层、可复用
+  - `toolcall` 低层、面向当前任务
 - 生命周期：
-    - `skill` 可长期复用
-    - `toolcall` 是一次会话中的临时动作
+  - `skill` 可长期复用
+  - `toolcall` 是一次会话中的临时动作
 - 作用对象：
-    - `skill` 约束“方法论”
-    - `toolcall` 改变“当前环境/文件/结果”
+  - `skill` 约束“方法论”
+  - `toolcall` 改变“当前环境/文件/结果”
 
 还是按照刚刚的例子：`sql-review` skill
 
 - 先检查语义正确性
-    - 调用某种 sql linter 来检查
-    - ↑*工具调用*
+  - 调用某种 sql linter 来检查
+  - ↑*工具调用*
 - 再检查索引命中与全表扫描风险
-    - 检查索引命中需要连接到数据库
-    - ↑*工具调用*
+  - 检查索引命中需要连接到数据库
+  - ↑*工具调用*
 - 最后给出优化版 SQL 和风险说明
 
 而这一整个流程实际上是一整个 `skill`，可以说 `skill` 本身就是由 LLM 本身能力+一大堆 `toolcall` 实现的

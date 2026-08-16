@@ -77,4 +77,4 @@ add  eax, 2
 ## 参照
 
 - [虚拟机随谈（一）：解释器，树遍历解释器，基于栈与基于寄存器，大杂烩](https://www.iteye.com/blog/rednaxelafx-492667)
-- [Java Virtual Machine Specification: 4.10.1.9. Type Checking Instructions ](https://docs.oracle.com/javase/specs/jvms/se24/html/jvms-4.html#jvms-4.10.1.9)
+- [Java Virtual Machine Specification: 4.10.1.9. Type Checking Instructions](https://docs.oracle.com/javase/specs/jvms/se24/html/jvms-4.html#jvms-4.10.1.9)

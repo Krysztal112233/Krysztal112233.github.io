@@ -94,7 +94,7 @@ nvme1n1     953.9G WD PC SN560 SDDPNQE-1T00-1002 233506402946
 
 意思是 ZFS 的标签损坏，不一定是盘本身有问题。请出 `smart` 工具看看原因
 
-### S.M.A.R.T.
+### S.M.A.R.T
 
 ```bash
 root in 🌐 homelab in ~ took 8s

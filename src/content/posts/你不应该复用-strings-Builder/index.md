@@ -120,7 +120,7 @@ func (b *Builder) String() string [](){
 >
 > 其中 `b` 的类型是 `[]byte`。
 >
-> `unsafe.String` 于 https://github.com/golang/go/issues/53003 引入
+> `unsafe.String` 于 <https://github.com/golang/go/issues/53003> 引入
 
 这个 unsafe 用法非常典型，可以避免一次因为从切片类型转换到 string 类型导致的开销。
 
@@ -136,7 +136,7 @@ func (b *Builder) String() string [](){
 
 > 这里引出了一个问题：如果因为某种情况导致内存布局不同，那么黑魔法就会反噬我们。
 >
-> 在上文提到的 issues https://github.com/golang/go/issues/53003 中也有相关提及：
+> 在上文提到的 issues <https://github.com/golang/go/issues/53003> 中也有相关提及：
 >
 > > The second use case is commonly seen as _(_[]byte)(unsafe.Pointer(&string)), which is by-default broken because the Cap field can be past the end of a page boundary (example here, in widely used code) -- this violates unsafe rule (1).
 

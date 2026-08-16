@@ -212,7 +212,7 @@ impl TotpAntiReplay {
 
 - 首先通过密码验证返回 challenge ID
 - 用户输入基于 TOTP 生成的 token
-    - 如果验证成功则本 `step` 不再可用，被原子操作记录到 `cache` 中，被消耗掉
-    - 如果验证失败则本次验证失败
+  - 如果验证成功则本 `step` 不再可用，被原子操作记录到 `cache` 中，被消耗掉
+  - 如果验证失败则本次验证失败
 
 注意，防重放是基于用户级别的，并非基于 challenge ID。

@@ -25,7 +25,7 @@ tags:
 
 因此我决定采用如下流水线设计：
 
-```
+```text
 Text  →  Lexer (RawTokenKind)  →  CST  →  Typed AST/HIR  →  Semantic Analysis  →  LSP Server  →  Editor
 | src |     Lazy Lexer         |  CST  |                 AST                   |
 ```
@@ -47,10 +47,10 @@ Text  →  Lexer (RawTokenKind)  →  CST  →  Typed AST/HIR  →  Semantic Ana
 - 标题
 - 有序/无序列表
 - 文本段
-    - 文本类型 `Paragraph`：这种类型允许使用 neorg 的修饰符例如 `{}` `//` `$||$`
-      等，这些修饰符可以正常执行其对应的功能
-    - 逐字类型 `VerbatimParagrah`: 这种类型的文本段不会处理 neorg
-      的修饰符，所有输入的修饰符都应该原样输出
+  - 文本类型 `Paragraph`：这种类型允许使用 neorg 的修饰符例如 `{}` `//` `$||$`
+    等，这些修饰符可以正常执行其对应的功能
+  - 逐字类型 `VerbatimParagrah`: 这种类型的文本段不会处理 neorg
+    的修饰符，所有输入的修饰符都应该原样输出
 - 标签 `Tag`
 
 > [!NOTE]
@@ -161,8 +161,8 @@ fn parse_linending(input: Span) -> IResult<Span, RawToken> {
 
 - 对于 `RawTokenKind::Tag` 我们直接提取 `@` 字符就好
 - 对于 `RawTokenKind::Linending` 我们需要判断并且保留文档里的换行符类型
-    - `\n`：UNIX 平台所使用的换行符
-    - `\r\n`：Windows 平台所使用的换行符
+  - `\n`：UNIX 平台所使用的换行符
+  - `\r\n`：Windows 平台所使用的换行符
 - 对于其他的标点符号，我们引入一个常量 `AVAILIABLE_PUNCT` 表示可以出现在
   `RawTokenKind::Punct` 内的字符（相当于白名单）
 - 如果在以上情况之外，则归类为 `RawTokenKind::NormalChar`

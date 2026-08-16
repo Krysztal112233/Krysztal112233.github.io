@@ -151,7 +151,7 @@ Debian 安装的 `samba` 配置文件中其实有如下配置项：
 
 至于到底怎么做联动，暂时没有想出来，在想出来之前直接用土法命令改好了：
 
-```bas
+```bash
 passwd krysztal
 smbpasswd krysztal
 ```

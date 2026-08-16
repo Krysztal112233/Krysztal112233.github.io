@@ -26,7 +26,7 @@ tags:
 
 其中 pgmq 并不存在于 Debian 的 Postgres Packaging 中，因此还是决定随着容器化比较好
 
-## Quadlet? Quadlet!
+## Quadlet? Quadlet
 
 在不久前我在使用 Docker 容器有遇到容器被入侵的事件，对此心有余悸，因此还是打算使用 Podman 这样的 rootless 容器化工具。
 
