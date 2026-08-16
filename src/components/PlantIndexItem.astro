@@ -1,12 +1,15 @@
 ---
 import { Icon } from "astro-icon/components";
 import type { Plant } from "../utils/growingLog";
+import { getSummaryFromBody } from "../utils/postSummary";
+import PostSummaryPreview from "./PostSummaryPreview.astro";
 
 interface Props {
     plant: Plant;
 }
 
 const { plant } = Astro.props;
+const summary = getSummaryFromBody(plant.about?.body);
 ---
 
 <div class="card m-8">
@@ -14,6 +17,7 @@ const { plant } = Astro.props;
         <h2 class="card-title text-2xl font-normal">
             <a href={`/growing/${plant.slug}/`}>{plant.title}</a>
         </h2>
+        {summary && <PostSummaryPreview text={summary} />}
         <div
             class="card-actions flex flex-col items-start justify-start gap-4 md:flex-row md:items-center"
         >
