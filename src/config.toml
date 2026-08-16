@@ -81,3 +81,9 @@ image = "https://cdn.gzti.me/avatar/Icon_2021.png"
 intro = "Walking on the Time Axis."
 link = "https://blog.gzti.me"
 title = "GZTime's Blog"
+
+[[links]]
+image = "https://orangemint-bucket-1304735585.cos.ap-guangzhou.myqcloud.com/images/Home/OrangeMintAvatar.avif"
+intro = "Speed of Light"
+link = "https://orange-mint.com"
+title = "早桔薄荷"
