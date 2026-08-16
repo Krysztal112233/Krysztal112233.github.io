@@ -18,6 +18,7 @@ BlueStacks 是一个超强的安卓模拟器，由于最近有需求所以安装
 
 在我安装完毕 BlueStacks5 后我发现我的 Docker 服务启动失败，仔细一想应该是 HyperV 被 BlueStacks5 的引擎占用了所以*没有在意*，在卸载 BlueStacks5 后甚至以为*重启一下*就行，但是我错了，**错的还非常严重**。
 
+<!-- rumdl-disable-next-line MD036 -->
 **噩梦就此开始。**
 
 ## 噩梦

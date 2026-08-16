@@ -55,7 +55,7 @@ CUPS 的配置改了两处：
 
 加打印机的命令：
 
-```
+```text
 lpadmin -p M7605D -E -v "usb://Lenovo/M7605D?serial=00000WP01074628" -m drv:///brlaser.drv/br2260d.ppd
 lpadmin -d M7605D   # 设为默认
 ```
@@ -81,7 +81,7 @@ lpadmin -d M7605D   # 设为默认
 
 大概率问题其实不是 IPv6，而是 CUPS 的注册状态。既然 IPv6 是被冤枉的，最后又把它开了回来：
 
-```
+```text
 use-ipv6=yes
 ```
 
@@ -95,7 +95,7 @@ use-ipv6=yes
 
 这次不跟它纠缠了，直接绕过自动发现，建一个固定队列直连 Pi：
 
-```
+```text
 /usr/sbin/lpadmin -p M7605D -E -v "ipp://192.168.2.199:631/printers/M7605D" -m everywhere
 lpoptions -d M7605D   # 设为默认
 ```
@@ -104,7 +104,7 @@ lpoptions -d M7605D   # 设为默认
 
 两个小发现：一是本机用户在 `lpadmin` 组里，建队列不用 sudo（但 `lpadmin` 在 /usr/sbin 下，不在 PATH 里，得写全路径）；二是把 `cups-browsed` 建的坏队列删掉之后，不到 20 秒它又原样建回来了。那行吧，直接把它整个停掉：
 
-```
+```text
 sudo systemctl disable --now cups-browsed
 ```
 
@@ -140,7 +140,7 @@ txt = [... "rp=printers/M7605D" ...]
 - `-m everywhere`：IPP Everywhere 免驱动，CUPS 自己会问打印机支持什么，不用装任何驱动包。
 - 普通用户在 `lpadmin` 组里就能执行，不用 sudo；注意 `lpadmin` 在 /usr/sbin 下，不在 PATH 里，要写全路径。
 
-**第三步：设为默认并验证。**
+**第三步：设为默认并验证。** 两条命令搞定：
 
 ```bash
 lpoptions -d M7605D      # 设为默认

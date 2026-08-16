@@ -11,9 +11,9 @@ tags:
 
 <!-- more -->
 
-<del>OpenCV
+~~OpenCV
 没有那么容易被静态链接，主要还是因为它的依赖里有很难被静态链接的库：GTK，Qt，FFMpeg
-所以需要重新考虑编译参数。我们有一个很好的参考，GoCV的仓库里有静态链接的Dockerfile，根据Dockerfile我们获取新的编译参数即可:</del>
+所以需要重新考虑编译参数。我们有一个很好的参考，GoCV的仓库里有静态链接的Dockerfile，根据Dockerfile我们获取新的编译参数即可:~~
 
 ```bash
 cmake -D CMAKE_BUILD_TYPE=RELEASE \
@@ -40,6 +40,6 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
     -D OPENCV_GENERATE_PKGCONFIG=ON ..
 ```
 
-<del>使用这份编译参数就可以获取一份可以被静态链接的 OpenCV 了</del>
+~~使用这份编译参数就可以获取一份可以被静态链接的 OpenCV 了~~
 
 放弃了，毁灭吧。这个世界就不存在可以被静态链接的 OpenCV4。

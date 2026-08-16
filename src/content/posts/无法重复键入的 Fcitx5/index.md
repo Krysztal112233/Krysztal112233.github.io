@@ -53,7 +53,7 @@ Ghostty 的 Discussion 中已经有不少的议题来研究这个问题，其中
 > In X11, key repetition is done on the X Server side, client doesn’t need to worry about the key repetition generation. Client will just receive multiple key press events (release is optional, depending on a “detectable key repetition” option) until the key is physically released.
 >
 > In Wayland, the key repetition is done on the application(client) side, the common logic is to implement this feature is that, when client gets a wl_keyboard.key press, it will start a timer and generate new key event on its own.
-
+>
 > 当 Wayland 决定对输入法使用键盘抓取，并在客户端进行按键重复处理时，问题就出现了。
 >
 > 在 X11 系统中，按键重复功能由 X 服务器端实现，客户端无需处理按键重复的生成逻辑。客户端只需持续接收多次按键按下事件（按键释放事件是可选的，取决于“可检测按键重复”选项的设置），直到物理按键被释放为止。

@@ -61,7 +61,7 @@ swapfile 和 swap 是同种东西，都是**虚拟内存**。不过各有优劣�
 
 那我使用这些压缩算法压缩内存不就变相扩大了内存？好聪明！
 
-但是这种操作的代价就是一旦进入 swap 了会消耗更多的 CPU 资源，这种技术就叫做 `zram`
+但是这种操作的代价就是一旦进入 swap 了会消耗更多的 CPU 资源，这种技术就叫做 `zram`[^4]
 
 很多发行版提供了对应的工具比如 `zram-tools`
 
@@ -69,8 +69,8 @@ swapfile 和 swap 是同种东西，都是**虚拟内存**。不过各有优劣�
 
 [^0]: [Debian 论坛：swap 分区](https://forums.debian.net/viewtopic.php?t=146429)
 
-[^1]: [swapon 命令的 man 手册](https://linux.die.net/man/8/swapon)
-
 [^3]: [DebianWiki](https://wiki.debian.org/Swap)
+
+[^1]: [swapon 命令的 man 手册](https://linux.die.net/man/8/swapon)
 
 [^4]: [DebianWiki: Zram](https://wiki.debian.org/ZRam)

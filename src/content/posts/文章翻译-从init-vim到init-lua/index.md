@@ -70,9 +70,9 @@ set encoding=utf-8
 
 - `vim.g.mapleader = ","`等价于`let g:mapleader = ','`；`vim.g`是一个代表全局变量的表
 - `vim.o.encoding="utf-8"`等价于`set encoding=utf-8`；其中：
-    - `vim.o`用于全局设置
-    - `vim.wo`用于窗口设置
-    - `vim.bo`用于缓冲设置
+  - `vim.o`用于全局设置
+  - `vim.wo`用于窗口设置
+  - `vim.bo`用于缓冲设置
 - `vim.fn`是一个存放函数的表，你可以使用 `vim.fn.thisIsMyFun` 或 `vim.fn["thisIsMyFun"]` 引用一个函数 `thisIsMyFun`；你可以使用 `vim.fn.thisIsMyFun()` 或 `vim.fn["thisIsMyFun"]()` 调用它
 - `vim.api`是一个 API 函数合集。我只用了一个：`vim.api.nvim_set_keymap`。他能映射我的按键组合到一些方法上（继续看，更多内容在下面）
 
@@ -154,4 +154,5 @@ end)
 
 把 350 行 `init.vim` 移到 `init.lua` 的整个过程花了我大约 2 小时，包括整理文件的时间（Lua 允许你使用多个配置文件，见我下面的例子），不包括玩新插件的时间。我花了大约 1 个小时来移动 90-95%的内容，另外花了 1 个小时来解决一些问题，如主目录或一些坏掉的的配置。最后我发现整个过程相当快，而且绝对收益良多，虽然我确信很多事情可以做得更好。如果你打算使用 Neovim 0.5 的新功能，我肯定会建议将你的配置转移到 Lua。
 
+<!-- rumdl-disable-next-line MD036 -->
 **我在 VimL 和 Lua 中的配置：<https://github.com/arnvald/viml-to-lua>**

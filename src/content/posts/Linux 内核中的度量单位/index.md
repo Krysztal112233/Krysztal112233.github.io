@@ -137,7 +137,7 @@ static void show_val_kb(struct seq_file *m, const char *s, unsigned long num)
 
 ### 历史渊源
 
-在闲逛的时候发现 Wikipedia 有个[专门的页面来展示 kilo 的演变](https://en.wikipedia.org/wiki/Timeline_of_binary_prefixes)，其中专门提到了 [Linux 内核使用 IEC 词头][https://en.wikipedia.org/wiki/Timeline_of_binary_prefixes#2001]。
+在闲逛的时候发现 Wikipedia 有个[专门的页面来展示 kilo 的演变](https://en.wikipedia.org/wiki/Timeline_of_binary_prefixes)，其中专门提到了 [Linux 内核使用 IEC 词头](https://en.wikipedia.org/wiki/Timeline_of_binary_prefixes#2001)。
 
 并且给了两个参考链接：
 
@@ -163,9 +163,9 @@ static void show_val_kb(struct seq_file *m, const char *s, unsigned long num)
 > - linux-1.3.0 里的 fs/proc/array.c，get_meminfo() 还没有 kB 标注，只输出原始
 >   数值
 > - linux-1.3.100 里的 fs/proc/array.c 已经明确写成：
->     - "MemTotal: %8lu kB\n"
->     - "MemFree: %8lu kB\n"
->     - 数值转换直接用 >> 10 和 << (PAGE_SHIFT - 10)
+>   - "MemTotal: %8lu kB\n"
+>   - "MemFree: %8lu kB\n"
+>   - 数值转换直接用 >> 10 和 << (PAGE_SHIFT - 10)
 >
 > 也就是在这个实现里，kB 明确就是按 1024 字节算，不是十进制的 1000 字节。
 >
@@ -178,10 +178,10 @@ static void show_val_kb(struct seq_file *m, const char *s, unsigned long num)
 > 我查到的归档来源：
 >
 > - linux-1.3.0.tar.gz
->   https://mirrors.edge.kernel.org/pub/linux/kernel/v1.3/linux-1.3.0.tar.gz
+>   <https://mirrors.edge.kernel.org/pub/linux/kernel/v1.3/linux-1.3.0.tar.gz>
 > - linux-1.3.100.tar.gz
->   https://mirrors.edge.kernel.org/pub/linux/kernel/v1.3/linux-1.3.100.tar.gz
+>   <https://mirrors.edge.kernel.org/pub/linux/kernel/v1.3/linux-1.3.100.tar.gz>
 > - linux-2.0.tar.gz
->   https://mirrors.edge.kernel.org/pub/linux/kernel/v2.0/linux-2.0.tar.gz
+>   <https://mirrors.edge.kernel.org/pub/linux/kernel/v2.0/linux-2.0.tar.gz>
 
 确实是历史的残响了。
