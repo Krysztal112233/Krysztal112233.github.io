@@ -1,0 +1,8 @@
+[global]
+# 博客正文以中文为主且常有长链接,80 字符行宽限制噪音过大
+disable = ["MD013"]
+
+# 种植日志条目与 about 页面是页面片段,标题由渲染层提供,不需要 h1
+[per-file-ignores]
+"src/content/growing/**/*.md" = ["MD041"]
+"src/pages/about.md" = ["MD041"]

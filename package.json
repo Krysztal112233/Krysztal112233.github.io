@@ -6,7 +6,7 @@
         "dev": "astro dev --host",
         "build": "astro build",
         "preview": "astro preview",
-        "fmt": "biome format --write && prettier -w ./**/*.astro ",
+        "fmt": "prettier -w ./**/*.astro && rumdl fmt",
         "new": "node scripts/new.ts"
     },
     "dependencies": {
