@@ -83,6 +83,8 @@ code {
 }
 
 .photo-stack figcaption {
+    font-family: "Victor Mono", monospace;
+    font-display: swap;
     @apply px-1 pt-2 pb-1 text-center text-sm italic text-neutral-500;
 }
 
@@ -98,20 +100,66 @@ code {
     transform: rotate(-1.1deg);
 }
 
-/* zoom 打开期间不能抬层级：否则 li 会压在 medium-zoom 克隆图上，
-   露出原图 visibility:hidden 留下的白色相纸空位（白块滞留） */
-body:not(.medium-zoom--opened) .photo-stack > li:hover {
-    z-index: 10;
+/* 触屏无 hover，避免点按后悬停状态粘滞 */
+@media (hover: hover) {
+    /* zoom 打开期间不能抬层级：否则 li 会压在 medium-zoom 克隆图上，
+       露出原图 visibility:hidden 留下的白色相纸空位（白块滞留） */
+    body:not(.medium-zoom--opened) .photo-stack > li:hover {
+        z-index: 10;
+    }
+
+    .photo-stack > li:hover > figure {
+        transform: rotate(0deg) scale(1.06);
+        @apply shadow-xl;
+    }
 }
 
-.photo-stack > li:hover > figure {
-    transform: rotate(0deg) scale(1.06);
-    @apply shadow-xl;
+/* 窄屏（手机）：纵向堆叠，后一张压在前一张下面，说明文字不被遮挡；
+   错位从上下改为左右 */
+@media (max-width: 40rem) {
+    .photo-stack {
+        flex-direction: column;
+        row-gap: 0;
+    }
+
+    .photo-stack > li {
+        flex: 0 1 auto; /* 列方向下 basis 会作用于高度，必须重置 */
+        width: min(15rem, 85%);
+    }
+
+    .photo-stack > li + li {
+        margin-top: -2.5rem;
+        margin-left: 0;
+    }
+
+    .photo-stack > li:nth-child(odd) {
+        top: 0;
+        left: -0.75rem;
+    }
+
+    .photo-stack > li:nth-child(even) {
+        top: 0;
+        left: 0.75rem;
+    }
+
+    /* 反向层级（支持至多 8 张） */
+    .photo-stack > li:nth-child(1) { z-index: 8; }
+    .photo-stack > li:nth-child(2) { z-index: 7; }
+    .photo-stack > li:nth-child(3) { z-index: 6; }
+    .photo-stack > li:nth-child(4) { z-index: 5; }
+    .photo-stack > li:nth-child(5) { z-index: 4; }
+    .photo-stack > li:nth-child(6) { z-index: 3; }
+    .photo-stack > li:nth-child(7) { z-index: 2; }
+    .photo-stack > li:nth-child(8) { z-index: 1; }
 }
 
-/* 正文独立图片：限制显示尺寸，居中（点击可放大查看原图） */
+/* 正文独立图片：限制显示尺寸，居中（点击可放大查看原图）
+   width/height 必须显式 auto：HTML 宽高属性是确定值，
+   两个方向同时被 max-* 约束时会各自压缩导致变形 */
 p > img[loading="lazy"] {
     @apply mx-auto block flex;
+    width: auto;
+    height: auto;
     max-width: min(100%, 30rem);
     max-height: 32rem;
 }
