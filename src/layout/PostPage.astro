@@ -38,3 +38,15 @@ const { subtitle, description, headings = [] } = Astro.props;
         </Article>
     </div>
 </MainFrame>
+
+<script>
+    import mediumZoom from "medium-zoom";
+
+    // Rebind after every view-transition navigation (ClientRouter swaps the DOM).
+    document.addEventListener("astro:page-load", () => {
+        mediumZoom("article.prose img", {
+            margin: 24,
+            background: "var(--color-base-100)",
+        });
+    });
+</script>
