@@ -28,7 +28,7 @@ export function rehypePhotoStack() {
             if (node.tagName !== "ul" || !node.children) return;
 
             const items = meaningful(node.children);
-            if (items.length < 2 || !items.every((c) => c.tagName === "li"))
+            if (items.length === 0 || !items.every((c) => c.tagName === "li"))
                 return;
 
             const images = items.map(soleImage);
