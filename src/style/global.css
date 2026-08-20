@@ -36,8 +36,84 @@ code {
     @apply mb-2 font-semibold;
 }
 
+/* 宝丽来照片堆：列表项只含图片时由 rehypePhotoStack 生成 */
+.photo-stack {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    row-gap: 2rem;
+    margin-block: 2rem;
+    padding: 0;
+    list-style: none;
+}
+
+.photo-stack > li {
+    position: relative;
+    flex: 0 1 480px;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/* 负 margin 让照片相互叠放 */
+.photo-stack > li + li {
+    margin-left: -4.5rem;
+}
+
+/* 上下错位，营造随手散落感 */
+.photo-stack > li:nth-child(odd) {
+    top: -0.5rem;
+}
+
+.photo-stack > li:nth-child(even) {
+    top: 0.9rem;
+}
+
+.photo-stack figure {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    @apply m-0 bg-[#fdfcf8] p-2 pb-1 shadow-md ring-1 ring-black/5 transition-all duration-300;
+}
+
+.photo-stack img {
+    display: block;
+    @apply m-0 w-full;
+}
+
+.photo-stack figcaption {
+    @apply px-1 pt-2 pb-1 text-center text-sm italic text-neutral-500;
+}
+
+.photo-stack > li:nth-child(odd) > figure {
+    transform: rotate(-2.4deg);
+}
+
+.photo-stack > li:nth-child(even) > figure {
+    transform: rotate(1.8deg);
+}
+
+.photo-stack > li:nth-child(3n) > figure {
+    transform: rotate(-1.1deg);
+}
+
+/* zoom 打开期间不能抬层级：否则 li 会压在 medium-zoom 克隆图上，
+   露出原图 visibility:hidden 留下的白色相纸空位（白块滞留） */
+body:not(.medium-zoom--opened) .photo-stack > li:hover {
+    z-index: 10;
+}
+
+.photo-stack > li:hover > figure {
+    transform: rotate(0deg) scale(1.06);
+    @apply shadow-xl;
+}
+
+/* 正文独立图片：限制显示尺寸，居中（点击可放大查看原图） */
 p > img[loading="lazy"] {
     @apply mx-auto block flex;
+    max-width: min(100%, 30rem);
+    max-height: 32rem;
 }
 
 .prose :is(h1, h2, h3, h4, h5, h6) {

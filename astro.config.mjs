@@ -15,6 +15,7 @@ import remarkBlock from "remark-github-beta-blockquote-admonitions";
 import remarkMath from "remark-math";
 import remarkToc from "remark-toc";
 import { getConfig } from "./src/config";
+import { rehypePhotoStack } from "./src/plugin/photo-stack.mjs";
 import { remarkReadingTime } from "./src/plugin/reading-time.mjs";
 
 const {
@@ -53,6 +54,7 @@ export default defineConfig({
         rehypePlugins: [
             rehypeMathjax,
             [rehypeAutolinkHeadings, { behavior: "append" }],
+            rehypePhotoStack,
         ],
     },
     vite: { plugins: [tailwindcss()] },
