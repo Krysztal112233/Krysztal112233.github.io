@@ -36,6 +36,13 @@ code {
     @apply mb-2 font-semibold;
 }
 
+/* medium-zoom 本身不设置层级；必须高于照片堆和固定导航，
+   否则移动端带 z-index 的相纸会盖住放大图，留下白块。 */
+.medium-zoom-overlay,
+.medium-zoom-image--opened {
+    z-index: 999;
+}
+
 /* 宝丽来照片堆：列表项只含图片时由 rehypePhotoStack 生成 */
 .photo-stack {
     display: flex;
