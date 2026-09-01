@@ -92,3 +92,9 @@ image = "https://orangemint-bucket-1304735585.cos.ap-guangzhou.myqcloud.com/imag
 intro = "Speed of Light"
 link = "https://orange-mint.com"
 title = "早桔薄荷"
+
+[[links]]
+image = "https://avatars.githubusercontent.com/u/96010373?v=4"
+intro = "☁"
+link = "https://honeywhite.cloud"
+title = "HoneyWhiteCloud"
