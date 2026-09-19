@@ -43,6 +43,7 @@ layout: ../layout/AboutPage.astro
 - 生化危机 2-7
 - Minecraft（及其衍生）
 - FF14 国服
+- 未知伤亡 :very_confused:
 - 以及其他
 
 ## 技术债

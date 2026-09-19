@@ -162,8 +162,9 @@ code {
 
 /* 正文独立图片：限制显示尺寸，居中（点击可放大查看原图）
    width/height 必须显式 auto：HTML 宽高属性是确定值，
-   两个方向同时被 max-* 约束时会各自压缩导致变形 */
-p > img[loading="lazy"] {
+   两个方向同时被 max-* 约束时会各自压缩导致变形。
+   :not(.emoji) 排除行内 :emoji: 短代码图片 */
+p > img[loading="lazy"]:not(.emoji) {
     @apply mx-auto block flex;
     width: auto;
     height: auto;
@@ -173,4 +174,15 @@ p > img[loading="lazy"] {
 
 .prose :is(h1, h2, h3, h4, h5, h6) {
     scroll-margin-top: 6rem;
+}
+
+/* GitHub 风格 :emoji: 短代码渲染出的行内 emoji 图片（rehypeEmoji，
+   数据源 src/plugin/emoji-data.mjs），高度跟随字号 */
+img.emoji {
+    display: inline-block;
+    height: 1.2em;
+    width: auto;
+    /* @tailwindcss/typography 的 .prose img 带 2em 垂直外边距，行内 emoji 须清零 */
+    margin: 0;
+    vertical-align: -0.2em;
 }

@@ -15,6 +15,7 @@ import remarkBlock from "remark-github-beta-blockquote-admonitions";
 import remarkMath from "remark-math";
 import remarkToc from "remark-toc";
 import { getConfig } from "./src/config";
+import { rehypeEmoji } from "./src/plugin/emoji.mjs";
 import { rehypePhotoStack } from "./src/plugin/photo-stack.mjs";
 import { remarkReadingTime } from "./src/plugin/reading-time.mjs";
 
@@ -53,8 +54,10 @@ export default defineConfig({
         ],
         rehypePlugins: [
             rehypeMathjax,
+            // emoji 须在 mathjax 之后：避免 :t: 这类 LaTeX 片段先被替换
             [rehypeAutolinkHeadings, { behavior: "append" }],
             rehypePhotoStack,
+            rehypeEmoji,
         ],
     },
     vite: { plugins: [tailwindcss()] },

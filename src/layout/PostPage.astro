@@ -44,7 +44,8 @@ const { subtitle, description, headings = [] } = Astro.props;
 
     // Rebind after every view-transition navigation (ClientRouter swaps the DOM).
     document.addEventListener("astro:page-load", () => {
-        mediumZoom("article.prose img", {
+        // :not(.emoji) 排除行内 :emoji: 短代码图片（不触发点击放大）
+        mediumZoom("article.prose img:not(.emoji)", {
             margin: 24,
             background: "var(--color-base-100)",
         });
