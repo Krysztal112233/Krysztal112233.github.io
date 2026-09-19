@@ -41,6 +41,8 @@ export default defineConfig({
             styleOverrides: {
                 codeFontFamily:
                     '"Maple Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+                // 与终端字号一致（Alacritty 12pt Maple Mono NF CN）；12pt = 16px
+                codeFontSize: "12pt",
             },
             useDarkModeMediaQuery: false,
             themeCssSelector: (theme) =>
