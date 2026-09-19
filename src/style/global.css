@@ -172,6 +172,13 @@ p > img[loading="lazy"]:not(.emoji) {
     max-height: 32rem;
 }
 
+/* 相邻代码块之间补间距：expressive-code 渲染为 div.expressive-code 而非 pre，
+   不受 typography 插件的 pre 垂直间距控制，两个代码块紧挨时会视觉上连成一块。
+   间隙取 1.5rem，与 prose-lg 段落间距一致。 */
+.prose .expressive-code + .expressive-code {
+    margin-top: 1.5rem;
+}
+
 .prose :is(h1, h2, h3, h4, h5, h6) {
     scroll-margin-top: 6rem;
 }
