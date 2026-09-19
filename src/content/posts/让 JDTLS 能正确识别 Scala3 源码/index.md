@@ -34,7 +34,7 @@ tags:
 
 - 我们用的是 JDTLS，这是源自 Eclipse Foundation 的作品
 - Gradle 能执行源码合并等
-    - 参照 Kotlin 编写的 Java mod，这是个很常见的需求
+  - 参照 Kotlin 编写的 Java mod，这是个很常见的需求
 
 那么问题大致就在于如何让 JDTLS 认得出来需要去找 Scala 的编译结果。
 
