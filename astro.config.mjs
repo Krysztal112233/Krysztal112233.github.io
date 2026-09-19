@@ -36,6 +36,12 @@ export default defineConfig({
                 pluginLineNumbers(),
             ],
             themes: ["everforest-light", "everforest-dark"],
+            // 与 global.css 的 --font-mono 保持一致：expressive-code 会
+            // 内联自己的默认等宽字体栈，必须显式覆盖才能用上 Maple Mono
+            styleOverrides: {
+                codeFontFamily:
+                    '"Maple Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+            },
             useDarkModeMediaQuery: false,
             themeCssSelector: (theme) =>
                 theme.type === "dark"

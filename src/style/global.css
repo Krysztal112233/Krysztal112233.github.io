@@ -4,6 +4,13 @@
     themes: all;
 }
 
+/* 代码场景（代码块 / 行内 code）统一使用 Maple Mono，
+   覆盖 Tailwind 默认的系统等宽字体栈 */
+@theme {
+    --font-mono: "Maple Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+        Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
 .hidden-scrollbar::-webkit-scrollbar {
     display: none;
 }
