@@ -34,7 +34,7 @@ tags:
 
 - 我们用的是 JDTLS，这是源自 Eclipse Foundation 的作品
 - Gradle 能执行源码合并等
-  - 参照 Kotlin 编写的 Java mod，这是个很常见的需求
+    - 参照 Kotlin 编写的 Java mod，这是个很常见的需求
 
 那么问题大致就在于如何让 JDTLS 认得出来需要去找 Scala 的编译结果。
 
@@ -88,7 +88,7 @@ eclipse {
 
 ## 最后的修改
 
-不过这两条写法是 Groovy 写法，显而易见的我能看懂但*我 写 不 懂*。
+不过这两条写法是 Groovy 写法，显而易见的我能看懂但*我 写 不 懂*。 :sense_of_impending_doom:
 
 那么我们现在的逻辑有了：把 Scala 的编译结果塞到 `classpath` 里就行了。有请 Kimi 大人来帮我写剩下的吧
 
