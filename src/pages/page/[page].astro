@@ -1,11 +1,12 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 import HomePostListPage from "../../components/HomePostListPage.astro";
 import MainFrame from "../../layout/MainFrame.astro";
 import { getPaginatedPosts, sortPosts } from "../../utils/postPagination";
+import { getPublishedPosts } from "../../utils/posts";
 
 export async function getStaticPaths() {
-    const allPosts = await getCollection("posts");
+    const allPosts = await getPublishedPosts();
     sortPosts(allPosts);
 
     const { totalPages } = getPaginatedPosts(allPosts, 1);

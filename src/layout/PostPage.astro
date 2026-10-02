@@ -14,12 +14,28 @@ interface Props extends HTMLAttributes<"html"> {
     description?: string;
     subtitle?: string;
     headings?: Heading[];
+    ogType?: "website" | "article";
+    publishedDate?: Date;
+    tags?: string[];
 }
 
-const { subtitle, description, headings = [] } = Astro.props;
+const {
+    subtitle,
+    description,
+    headings = [],
+    ogType,
+    publishedDate,
+    tags,
+} = Astro.props;
 ---
 
-<MainFrame subtitle={subtitle} description={description}>
+<MainFrame
+    subtitle={subtitle}
+    description={description}
+    ogType={ogType}
+    publishedDate={publishedDate}
+    tags={tags}
+>
     <div class="relative px-4">
         <div
             class="pointer-events-none fixed top-28 left-[calc(25%-17rem)] hidden w-60 2xl:block"

@@ -1,10 +1,10 @@
 ---
-import { getCollection } from "astro:content";
 import HomePostListPage from "../components/HomePostListPage.astro";
 import MainFrame from "../layout/MainFrame.astro";
 import { getPaginatedPosts, sortPosts } from "../utils/postPagination";
+import { getPublishedPosts } from "../utils/posts";
 
-const allPosts = await getCollection("posts");
+const allPosts = await getPublishedPosts();
 sortPosts(allPosts);
 
 const { posts, currentPage, totalPages } = getPaginatedPosts(allPosts, 1);

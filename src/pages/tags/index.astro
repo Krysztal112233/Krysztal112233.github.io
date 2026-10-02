@@ -1,10 +1,10 @@
 ---
-import { getCollection } from "astro:content";
 import Article from "../../components/Article.astro";
 import MainFrame from "../../layout/MainFrame.astro";
 import I from "../../components/TagListItem.astro";
+import { getPublishedPosts } from "../../utils/posts";
 
-const allPosts = await getCollection("posts");
+const allPosts = await getPublishedPosts();
 const tags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())];
 const tagEntries = tags.map((tag) => ({
     name: tag,

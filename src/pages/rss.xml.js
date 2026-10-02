@@ -1,14 +1,14 @@
 import rss from "@astrojs/rss";
 import { getConfig } from "../config";
-import { getCollection } from "astro:content";
 import { getPostSummary } from "../utils/postSummary";
+import { getPublishedPosts } from "../utils/posts";
 
 export async function GET(context) {
     const {
         site: { description, title, site },
     } = await getConfig();
 
-    const posts = await getCollection("posts");
+    const posts = await getPublishedPosts();
 
     return rss({
         title: title,

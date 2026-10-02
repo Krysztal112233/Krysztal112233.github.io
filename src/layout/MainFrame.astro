@@ -13,16 +13,26 @@ import { ClientRouter } from "astro:transitions";
 interface Props {
     description?: string;
     subtitle?: string;
+    ogType?: "website" | "article";
+    publishedDate?: Date;
+    tags?: string[];
 }
 
 const {
     site: { description: siteDescription, title, author },
 }: Config = await getConfig();
 
-const { subtitle, description } = Astro.props;
+const {
+    subtitle,
+    description,
+    ogType = "website",
+    publishedDate,
+    tags = [],
+} = Astro.props;
 
 const pageTitle = subtitle ? `${subtitle} | ${title}` : title;
 const pageDescription = description ?? siteDescription;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
 ---
 
 <html lang="zh-CN" class="hidden-scrollbar" data-theme="retro">
@@ -91,6 +101,39 @@ const pageDescription = description ?? siteDescription;
     <meta name="title" content={pageTitle} />
     {pageDescription && <meta name="description" content={pageDescription} />}
     {author && <meta name="author" content={author} />}
+
+    <link rel="canonical" href={canonicalURL} />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={pageTitle} />
+    {
+        pageDescription && (
+            <meta property="og:description" content={pageDescription} />
+        )
+    }
+    <meta property="og:site_name" content={title} />
+    <meta property="og:locale" content="zh_CN" />
+    {
+        publishedDate && (
+            <meta
+                property="article:published_time"
+                content={publishedDate.toISOString()}
+            />
+        )
+    }
+    {
+        ogType === "article" &&
+            tags.map((tag) => <meta property="article:tag" content={tag} />)
+    }
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={pageTitle} />
+    {
+        pageDescription && (
+            <meta name="twitter:description" content={pageDescription} />
+        )
+    }
 
     <ClientRouter />
 

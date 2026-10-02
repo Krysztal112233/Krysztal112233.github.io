@@ -1,10 +1,11 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 import PostListSection from "../../components/PostListSection.astro";
 import MainFrame from "../../layout/MainFrame.astro";
+import { getPublishedPosts } from "../../utils/posts";
 
 export async function getStaticPaths() {
-    const allPosts = await getCollection("posts");
+    const allPosts = await getPublishedPosts();
 
     const uniqueTags = [
         ...new Set(allPosts.map((post: any) => post.data.tags).flat()),

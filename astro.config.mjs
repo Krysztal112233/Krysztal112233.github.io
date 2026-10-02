@@ -1,3 +1,7 @@
+import { createRequire } from "node:module";
+import fs from "node:fs/promises";
+import { pathToFileURL } from "node:url";
+
 import sitemap from "@astrojs/sitemap";
 import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
@@ -22,6 +26,68 @@ import { remarkReadingTime } from "./src/plugin/reading-time.mjs";
 const {
     site: { site },
 } = await getConfig();
+
+// Astro's glob loader turns each content path segment into an entry id via
+// github-slugger (astro/dist/content/utils.js). Resolve that exact function
+// through astro's own dependencies so our post-id mapping matches the URLs
+// Astro actually generates. If resolution ever fails, fall back to raw
+// directory names rather than breaking the daily-cron deploy.
+let githubSlug = (name) => name;
+try {
+    const requireFromAstro = createRequire(import.meta.resolve("astro"));
+    const sluggerUrl = pathToFileURL(requireFromAstro.resolve("github-slugger"));
+    ({ slug: githubSlug } = await import(sluggerUrl.href));
+} catch {
+    console.warn(
+        "[sitemap-lastmod] github-slugger not resolvable via astro; " +
+            "falling back to raw directory names for post id mapping.",
+    );
+}
+
+// Post entry id → frontmatter date, used to emit <lastmod> in the sitemap.
+// Posts with missing/unparsable dates simply get no lastmod.
+async function getPostLastmodMap() {
+    const map = new Map();
+
+    async function walk(dirUrl, segments) {
+        for (const dirent of await fs.readdir(dirUrl, {
+            withFileTypes: true,
+        })) {
+            if (dirent.isDirectory()) {
+                await walk(new URL(`${dirent.name}/`, dirUrl), [
+                    ...segments,
+                    dirent.name,
+                ]);
+                continue;
+            }
+            if (dirent.name !== "index.md") {
+                continue;
+            }
+            try {
+                const text = await fs.readFile(
+                    new URL("index.md", dirUrl),
+                    "utf8",
+                );
+                const frontmatter = text.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+                const dateText = frontmatter?.[1].match(
+                    /^date:\s*["']?(.+?)["']?\s*$/m,
+                )?.[1];
+                const date = dateText ? new Date(dateText) : undefined;
+                if (date && !Number.isNaN(date.getTime())) {
+                    const id = segments.map((s) => githubSlug(s)).join("/");
+                    map.set(id, date.toISOString());
+                }
+            } catch {
+                // unreadable file — skip its lastmod
+            }
+        }
+    }
+
+    await walk(new URL("./src/content/posts/", import.meta.url), []);
+    return map;
+}
+
+const postLastmod = await getPostLastmodMap();
 
 export default defineConfig({
     devToolbar: {
@@ -51,7 +117,21 @@ export default defineConfig({
                     : '[data-theme="retro"]',
         }),
         icon(),
-        sitemap(),
+        sitemap({
+            // Attach <lastmod> from each post's frontmatter date so Google
+            // can prioritize recrawls; non-post pages omit lastmod.
+            serialize(item) {
+                const pathname = decodeURIComponent(
+                    new URL(item.url).pathname,
+                );
+                const postId = pathname.match(/^\/posts\/(.+?)\/?$/)?.[1];
+                const lastmod = postId ? postLastmod.get(postId) : undefined;
+                if (lastmod) {
+                    item.lastmod = lastmod;
+                }
+                return item;
+            },
+        }),
     ],
     markdown: {
         remarkPlugins: [
