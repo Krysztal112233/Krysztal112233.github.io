@@ -23,6 +23,24 @@ import { rehypeEmoji } from "./src/plugin/emoji.mjs";
 import { rehypePhotoStack } from "./src/plugin/photo-stack.mjs";
 import { remarkReadingTime } from "./src/plugin/reading-time.mjs";
 
+// 自定义 Expressive Code 插件：把代码块 meta 中的裸 `fold` 关键字翻译成
+// collapsible-sections 插件的整段折叠 `collapse={1-N}`。EC 本身不认识
+// `fold`（只会解析成无人消费的无 key meta 选项），必须在这里显式转换。
+// 注意：必须注册在 pluginCollapsibleSections() 之前，后者在
+// preprocessMetadata 阶段读取 collapse 范围。
+function pluginFold() {
+    return {
+        name: "Fold",
+        hooks: {
+            preprocessMetadata: ({ codeBlock }) => {
+                if (!codeBlock.metaOptions.getBoolean("fold")) return;
+                const lineCount = codeBlock.getLines().length;
+                codeBlock.meta = `${codeBlock.meta} collapse={1-${lineCount}}`;
+            },
+        },
+    };
+}
+
 const {
     site: { site },
 } = await getConfig();
@@ -97,6 +115,7 @@ export default defineConfig({
     integrations: [
         expressiveCode({
             plugins: [
+                pluginFold(),
                 pluginCollapsibleSections(),
                 pluginLanguageBadge(),
                 pluginLineNumbers(),
